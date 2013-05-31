@@ -1,0 +1,54 @@
+/* 
+    Document   : style
+    Created on : 22-Mar-2013, 12:39:53 PM
+    Author     : Scott
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+#education-unit-colour-box .education-colour-item > span {
+	display: inline-block;
+	width: 110px;
+	height: 20px;
+	overflow: visible;
+}
+.wp-picker-container {
+	margin-left: 30px;
+}
+#education-unit-colour-box .ubc-collab-textarea, #education-unit-colour-box .ubc-collab-text-input {
+	width: 45%;
+}
+#education-unit-colour-box .wp-picker-container .iris-picker {
+	margin-left: 120px;
+}
+#education-apply-now-box input:text {
+ width: 50%;
+}
+.wp-picker-container {
+	z-index: 1;
+}
+/* Education Brand */
+.brand-img-upload {
+	margin-bottom: 15px;
+}
+.brand-img-upload, .brand-img-upload span, .brand-img-upload .button, .brand-img-upload .ubc-collab-text-input {
+	display: block;
+	clear: both;
+}
+.brand-img-upload .ubc-collab-text-input {
+	width: 55%;
+}
+.brand-img-upload .button {
+	margin: 6px 0;	
+}
+.education-img-field-preview {
+	margin-top: 15px;
+}
+.brand-img-upload img {
+	max-width: 55%;
+	height: auto;
+}
+#clf-unit-colour-box {
+	display: none;	
+}
