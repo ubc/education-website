@@ -46,16 +46,20 @@ Class UBC_Education_Theme_Options {
 		add_action('admin_print_scripts', array(__CLASS__,'my_admin_scripts' ) ); 
 		add_action('admin_enqueue_scripts', array(__CLASS__,'foe_uploader_options_enqueue_scripts' ) );
 		//Adds FOE Stylesheet
-		add_action('wp_enqueue_scripts', array(__CLASS__, 'theme_styles'));		 
+		add_action('wp_enqueue_scripts', array(__CLASS__, 'education_theme_styles'));		 
 		//Add FOE Brand Header
 		add_action( 'wp-hybrid-clf_after_header', array(__CLASS__, 'faculty_plugin_before_header_widget') , 10);
 		 //Add FOE Featured Images to WordPress if one is present
 		add_filter('wp-hybrid-clf_before_content', array(__CLASS__,'output_foe_featured_img'), 10, 3);
 		//Add FOE Back to top link
 		add_action('wp-hybrid-clf_after_content', array(__CLASS__, 'output_back_to_top') , 10);
-		add_action('wp_head', array(__CLASS__,'education_header_theme'), 9);
     }
-    
+	/**
+	 * update_clf_settings.
+	 * 
+	 * @access public
+	 * @return void
+	 */
     function update_clf_settings(){
     	add_settings_section(
 			'clf', // Unique identifier for the settings section
@@ -82,13 +86,13 @@ Class UBC_Education_Theme_Options {
 	    );
 		*/
 		// UBC Campus Identifier
-		//add_settings_field(
-			//'clf-campus',
-			//__('Campus Identity', 'ubc_collab'),
-			//array('UBC_Collab_CLF', 'campus'),
-			//'theme_options',
-			//'clf'
-		//);
+		add_settings_field(
+			'clf-campus',
+			__('Campus Identity', 'ubc_collab'),
+			array('UBC_Collab_CLF', 'campus'),
+			'theme_options',
+			'clf'
+		);
 		
 		// UBC CLF Faculty Input Box
 		add_settings_field(
@@ -408,12 +412,10 @@ Class UBC_Education_Theme_Options {
             return $output;            
         }
 	 /**
-     * theme_styles
-     * Adds the FOE Stylesheet
-     * @access public
-     * @return string
+     * education_theme_styles
+     * Adds the Faculty of Education Stylesheet
      */         
-		function theme_styles()  
+		function education_theme_styles()  
 			{ 
 			  wp_register_style( 'foe-clf', 
 				plugins_url('education-website') . '/css/global.css', 
@@ -427,8 +429,6 @@ Class UBC_Education_Theme_Options {
 	 /**
      * output_foe_brand_header
      * Adds the FOE brand header
-     * @access public
-     * @return string
      */         
 
 	function faculty_plugin_before_header_widget(){
@@ -441,8 +441,6 @@ Class UBC_Education_Theme_Options {
 	 /**
      * output_foe_featured_img
      * Adds featured images to WP pages
-     * @access public
-     * @return string
      */         
         function output_foe_featured_img(){
 		if ( is_page() ) {
@@ -458,8 +456,6 @@ Class UBC_Education_Theme_Options {
 	 /**
      * output_back_to_top
      * Adds the back to top below content
-     * @access public
-     * @return string
      */         
 
 	function output_back_to_top(){
@@ -478,8 +474,6 @@ Class UBC_Education_Theme_Options {
       /**
      * wp_head
      * Appends some of the dynamic css and js to the wordpress header
-     * @access public
-     * @return void
      */        
         function wp_head(){ ?>
 <style type="text/css" media="screen">
