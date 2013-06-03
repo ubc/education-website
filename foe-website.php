@@ -2,7 +2,7 @@
 
 /*
   Plugin Name: UBC Education Website
-  Plugin URI:
+  Plugin URI:  http://educ.ubc.ca
   Description: Transforms the UBC Collab Theme into an Education website | Note: This plugin will only work on wp-hybrid-clf theme
   Version: 1
   Author: Amir Entezaralmahdi | Arts ISIT & David brabbins
@@ -496,6 +496,7 @@ Class UBC_Education_Theme_Options {
 			.accordion.sidenav .single a.opened:hover,
 			.sidenav .accordion-heading:hover,
 			.sidenav .accordion-heading .accordion-toggle:hover,
+			.sidenav .accordion-group .accordion-inner>a.opened,
 			.simple-custom-menu .active a,
 			.simple-custom-menu a:hover,
 			.carousel-caption,
@@ -520,9 +521,13 @@ Class UBC_Education_Theme_Options {
 			#content h6,
 			#content .hero-unit h1,
 			#frontpage-siderbar .tab-pane a,
-			#content a {
-			 color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+			a {
+			 color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
 			}
+			a:hover {
+			 color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+			}
+
 			.sidenav {
 				border: 0;
 				border-bottom: 10px solid <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;	
