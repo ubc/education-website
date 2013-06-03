@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Education Website ===
 Contributors: brabbins
 Donate link: n/a
 Tags: custom
