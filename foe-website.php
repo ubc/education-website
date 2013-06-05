@@ -369,7 +369,7 @@ Find dimensions and templates for the <a href="http://clf.educ.ubc.ca/design-sty
                 'education-gradient-colour'		=> '#002145',
                 'education-hover-colour'		=> '#002145',
 				'education-enable-banner' 		=> 'true',
-				'foe-banner-image'    			=> '',
+				'foe-banner-image'    			=> plugins_url('education-website').'/img/banner.png',
 				'foe-chevron-image-regular'    	=>  plugins_url('education-website').'/img/faculty-chevron.png',
 				'foe-chevron-image-retina'    	=> plugins_url('education-website').'/img/faculty-chevron-@2x.png',
             );
