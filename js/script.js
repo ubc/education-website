@@ -14,9 +14,9 @@ jQuery(document).ready(function() {
         palettes: ['#002145', '#2F5D7C', '#5E869F', '#98B2C3', '#C3D0DB']
     });
     
-    jQuery("#education-hover-colour").wpColorPicker({
-        palettes: ['#5F62A9', '#98D5CA', '#D6DF30', '#FFDD00', '#E11553', '#EE523C']
-    });   
+//    jQuery("#education-hover-colour").wpColorPicker({
+//        palettes: ['#5F62A9', '#98D5CA', '#D6DF30', '#FFDD00', '#E11553', '#EE523C']
+//    });   
     
     jQuery('#education-gradient-colour').after('<a id="lighter-colour" href="#">35% lighter than the Main</a>');
     
@@ -77,33 +77,5 @@ jQuery(document).ready(function() {
 		} else {
 			jQuery(".banner-enable").slideUp();
 		}
-});
-    
-//    if(jQuery('#ubc-collab-theme-options-arts-enable-why-unit').attr('checked')){
-//        jQuery(".arts-why-inputs").show();
-//    } else{
-//        jQuery(".arts-why-inputs").hide();
-//    }
-//    if(jQuery('#ubc-collab-theme-options-arts-enable-apply-now').attr('checked')){
-//        jQuery(".arts-apply-inputs").show();
-//    } else{
-//        jQuery(".arts-apply-inputs").hide();
-//    }
-//    jQuery('#ubc-collab-theme-options-arts-enable-why-unit').change( function(){
-//		
-//		if( jQuery(this).prop("checked") ){
-//			jQuery(".arts-why-inputs").slideDown();
-//		} else {
-//			jQuery(".arts-why-inputs").slideUp();
-//		}
-//	});
-//        
-//        jQuery('#ubc-collab-theme-options-arts-enable-apply-now').change( function(){
-//		console.log('checked');
-//		if( jQuery(this).prop("checked") ){
-//			jQuery(".arts-apply-inputs").slideDown();
-//		} else {
-//			jQuery(".arts-apply-inputs").slideUp();
-//		}
-//	});
+	});
 });
