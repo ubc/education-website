@@ -46,8 +46,11 @@
 	margin-top: 15px;
 }
 .brand-img-upload img {
-	max-width: 55%;
-	height: auto;
+height: auto;
+width: 100%;
+max-width: 55%;
+vertical-align: middle;
+border: 0px none;
 }
 #clf-unit-colour-box {
 	display: none;	

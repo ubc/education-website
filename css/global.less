@@ -40,40 +40,40 @@ a img, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .nav-tabs > li > a {
 	background: #005f80;
 }
-h1, h2, h3, h4, h5, h6, #ubc7-unit-menu .nav > li > a, #ubc7-unit-alternate-navigation .nav > li > a, #ubc7-unit-menu .btn-group .btn, #ubc7-unit-alternate-navigation .btn-group .btn, .hero-unit h1 {
+h1, h2, h3, h4, h5, h6, .hero-unit h1 {
 	color: #002145;
-}
-#ubc7-unit-menu, #ubc7-unit-menu .navbar-inner {
-	background: rgb(255,255,255);
-}
-#ubc7-unit-menu .btn-group .btn, #ubc7-unit-alternate-navigation .btn-group .btn {
-	background: none;
 }
 .ubc7-back-to-top {
 	color: #2f5d7c;
 }
-
+#ubc7-footer {
+	#ubc7-unit-address a, .ubc7-back-to-top a, #ubc7-unit-address a:hover, .ubc7-back-to-top a:hover {
+		color: #2f5d7c;
+	}
+}
 /*----------------------------------------- Top Navigation*/
 ul.nav {
 	margin-bottom: 0;
 }
+#ubc7-unit-menu {
+	.nav > li.active > a, .nav > li.active > .btn-group > a, .nav > li.current-page-ancestor > a, .nav > li.current-page-ancestor .btn-group > a {
+		background: #002145;
+		color: #FFF;
+	}
+	.current_page_item .btn-group .ubc7-arrow.down-arrow, .current-page-ancestor .btn-group .ubc7-arrow.down-arrow {
+		background-position: -1178px -227px!important;
+	}
+	.dropdown-menu  a {
+		background: #FFF;
+	}
+}
+
 #ubc7-carousel .carousel-caption, .ubc-carousel .carousel-caption, #ubc7-carousel-controller, .ubc7-carousel-controller {
 	background: #2F5D7C;
-}
-#ubc7-unit-menu {
-	.current-page-ancestor, .current-menu-ancestor, .current-menu-parent, .current-page-parent, .current_page_parent, .current_page_ancestor {
-		background:#fff;
-		color: #FFF;
-		&:hover {
-			color: #FFF;
-		}
-	}
 }
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 #dept-brand {
 	height: 67px;
-	-webkit-box-shadow: inset 0px 0px 10px 0px rgba(1, 1, 1, 0.4);
-	box-shadow: inset 0px 0px 10px 0px rgba(1, 1, 1, 0.4);
 	position: relative;
 }
 .single-page #dept-brand {
@@ -102,7 +102,7 @@ ul.nav {
 	a {
 		position: absolute;
 		text-indent: -10000px;
-		width: 220px;
+		width: 228px;
 		height: 60px;
 	}
 }
@@ -299,6 +299,13 @@ body {
 	margin-top: 0;
 	 h1 {
 		 margin-top: 0;
+	}
+}
+#content {
+	a[href$='.pdf']:after, a[href$='.doc']:after, a[href$='.docx']:after {
+		font-family: FontAwesome;
+		content: "\f0f6";
+		padding-left: 7px;
 	}
 }
 
@@ -661,9 +668,9 @@ color: #fff;
 }
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 #department-logo {
-	margin: 5px 0 0 -30px;
-	width: 220px;
-	height: 115px;
+	margin: 5px 0 0 -15px;
+	width: 202px;
+	height: 110px;
 	background-position: 100%;
 	h1 {
 		display: none;
@@ -671,7 +678,6 @@ color: #fff;
 	a {
 		position: absolute;
 		text-indent: -10000px;
-		width: 220px;
 		height: 93px;
 	}
 }
@@ -680,10 +686,13 @@ color: #fff;
 	margin-top: -63px;
 	background: #FFF;
 	padding: 8px;
-	-webkit-box-shadow: 0 -10px 22px rgba(50,50,50,0.29);
-	-moz-box-shadow: 0 -10px 22px rgba(50,50,50,0.29);
-	box-shadow: 0 -10px 22px rgba(50,50,50,0.29);
+	-webkit-box-shadow: 0 -10px 22px rgba(50,50,50,0.12);
+	-moz-box-shadow: 0 -10px 22px rgba(50,50,50,0.12);
+	box-shadow: 0 -10px 22px rgba(50,50,50,0.12);
 	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
 	
 	.nav-tabs>li>a, .nav-pills>li>a {
 		font-size: 85%;
@@ -700,7 +709,7 @@ body {
 	&.l1-column, &.l2-column-ms, &.l2-column-sm, &.l3-column-msp, &.l3-column-pms, &.l3-column-psm {
 	
 		#content {
-			padding: 20px 20px 0 20px;
+			padding: 30px 20px 0 20px;
 		}
 	}
 }
@@ -708,9 +717,12 @@ body {
 #content {
 	margin-top: -45px;
 	padding-top: 30px;
-	-webkit-box-shadow: 0 -10px 22px rgba(50,50,50,0.29);
-	-moz-box-shadow: 0 -10px 22px rgba(50,50,50,0.29);
-	box-shadow: 0 -10px 22px rgba(50,50,50,0.29);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+	-webkit-box-shadow: 0 -10px 22px rgba(50,50,50,0.2);
+	-moz-box-shadow: 0 -10px 22px rgba(50,50,50,0.2);
+	box-shadow: 0 -10px 22px rgba(50,50,50,0.2);
 			
 	.page-title, .entry-title, .archive-title, .category-title {
 		border-bottom: 1px solid #d7e0e7;
@@ -727,7 +739,7 @@ padding-top: 85px;
 }
 body.l2-column-ms #content,
 body.l3-column-msp #content {
-padding-top: 77px;
+padding-top: 75px;
 }
 /*----------------------------------------- Sidebar And Secondary Navigation*/
 body.l2-column-sm #primary-secondary,
@@ -769,7 +781,6 @@ margin-top: 45px;
 	}
 }
 }
-
 @media screen and (min-width: 979px) {
 /*----------------------------------------- Primary Styles*/
 /*----------------------------------------- Top Navigation*/
@@ -777,9 +788,9 @@ margin-top: 45px;
 /*----------------------------------------- Front Page*/
 /*----------------------------------------- Content- Entry Header Styles and Container Styles*/
 #department-logo {
-	background-position: 45% 0;
-	width: 269px;
-	margin: 5px 0 0 -30px;
+	background-position: 100% 0;
+	width: 202px;
+	margin: 5px 0 0 0px;
 }
 /*----------------------------------------- Sidebar And Secondary Navigation*/
 /*----------------------------------------- Featured Images*/
@@ -796,11 +807,14 @@ margin-top: 45px;
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 #department-logo {
-	background-position: 45% 0;
+	background-position: 53% 0;
 	width: 269px;
-	margin: 5px 0 0 -10px;
+	margin: 5px 0 0 0px;
+	
+	a {
+		width: 264px;
+	}
 }
-
 /*----------------------------------------- Front Page*/
 #frontpage-siderbar {
 	.nav-tabs > li > a, .nav-pills > li > a {
@@ -844,13 +858,6 @@ margin-top: 45px;
 /*----------------------------------------- Primary Styles*/
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
-#department-logo {
-	background-position: 0 0;
-}
-#department-logo a {
-	width: 220px;
-	height: 67px;
-}
 table.collapse td[class*="span"], table.collapse th[class*="span"], .row-fluid table.collapse td[class*="span"], .row-fluid table.collapse th[class*="span"] {
 display: table-row;
 float: none;
@@ -989,38 +996,7 @@ border-bottom: 1px solid #CCC;
  @media screen and (min-width: 979px) {
 /*----------------------------------------- Primary Styles*/
 /*----------------------------------------- Top Navigation*/
-#ubc7-unit-menu, #ubc7-unit-menu .navbar-inner {
-	background: rgb(255,255,255);
-	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(50%, rgba(241,241,241,1)), color-stop(51%, rgba(225,225,225,1)), color-stop(100%, rgba(246,246,246,1)));
-	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%);
-	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%);
-	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%);
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 );
-}
-#ubc7-unit-menu .nav > li.active > a, #ubc7-unit-alternate-navigation .nav > li.active > a, #ubc7-unit-menu .nav > li.active > .btn-group, .current-menu-ancestor, .current-menu-parent, .current-page-parent, .current_page_parent, #ubc7-unit-menu .current-page-ancestor {
-	background: rgb(234,234,234);
-	background: -moz-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(214,214,214,1) 49%, rgba(229,229,229,1) 50%, rgba(242,242,242,1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(234,234,234,1)), color-stop(49%, rgba(214,214,214,1)), color-stop(50%, rgba(229,229,229,1)), color-stop(100%, rgba(242,242,242,1)));
-	background: -webkit-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(214,214,214,1) 49%, rgba(229,229,229,1) 50%, rgba(242,242,242,1) 100%);
-	background: -o-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(214,214,214,1) 49%, rgba(229,229,229,1) 50%, rgba(242,242,242,1) 100%);
-	background: -ms-linear-gradient(top, rgba(234,234,234,1) 0%, rgba(214,214,214,1) 49%, rgba(229,229,229,1) 50%, rgba(242,242,242,1) 100%);
-	background: linear-gradient(to bottom, rgba(234,234,234,1) 0%, rgba(214,214,214,1) 49%, rgba(229,229,229,1) 50%, rgba(242,242,242,1) 100%);
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#f2f2f2', GradientType=0 );
-	-webkit-box-shadow: inset 0px 0px 10px rgba(50, 50, 50, 0.5);
-	-moz-box-shadow: inset 0px 0px 10px rgba(50, 50, 50, 0.5);
-	box-shadow: inset 0px 0px 10px rgba(50, 50, 50, 0.5);
-	color: #002145;
-}
-#ubc7-unit-menu .current-page-ancestor .current-page-ancestor, {
-	background-color: #d7e0e7!important;
-	background-image: none;
-	color: #002145;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
+
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 /*----------------------------------------- Front Page*/
 .home-layout-option1 #frontpage-siderbar {
@@ -1101,12 +1077,10 @@ border-bottom: 1px solid #CCC;
 /*----------------------------------------- Special Features- Accordion, Tabs, List Thumbnails and other */
 }
  @media (-webkit-min-device-pixel-ratio: 2),  (min-resolution: 192dpi) {
-#department-logo {
-	background-size: 809px 116px;
-	z-index: 10000;
+	#department-logo {
+		background-size: 701px 116px;
+	}
 }
-}
-
 @media print {
 
 	.accordion-shortcode .accordian-shortcode-content.collapse {
