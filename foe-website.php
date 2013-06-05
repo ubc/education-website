@@ -482,11 +482,17 @@ Find dimensions and templates for the <a href="http://clf.educ.ubc.ca/design-sty
 			#container, .content, #frontpage-siderbar {
 				background: url(<?php echo plugins_url('education-website')?>/img/debut_light.png) repeat !important;
 			}
-			ul.nav-tabs li.active a {
+			ul.nav-tabs li a {
 				background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
 			}
 			ul.nav-tabs li.active a {
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+			}
+			ul.nav-tabs>li>a:hover {
+				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
 			}
 			#ubc7-unit-menu .nav-collapse .nav > li > a:hover,
 			#ubc7-unit-menu .nav > li.active > a:hover,
@@ -510,13 +516,8 @@ Find dimensions and templates for the <a href="http://clf.educ.ubc.ca/design-sty
 			.sidenav .accordion-group .accordion-inner>a.opened,
 			.simple-custom-menu .active a,
 			.simple-custom-menu a:hover,
-			.carousel-caption,
-			ul.nav-tabs li a {
+			.carousel-caption {
 				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-			}
-			ul.nav-tabs>li>a:hover {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
 			}
 			#content h1,
 			#content h2,
