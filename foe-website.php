@@ -97,6 +97,7 @@ Class UBC_Education_Theme_Options {
         if( !is_admin() ):
         	wp_register_script( 'ubc-collab-education', plugins_url('education-website').'/js/education-website.js', array( 'jquery' ), '0.1', true );
 			wp_register_script( 'foe-upload', plugins_url('education-website') .'/js/foe-upload.js', array('jquery','media-upload','thickbox') );
+			wp_enqueue_script( 'my-script-handle', plugins_url('my-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
         	//wp_enqueue_style('ubc-collab-education', plugins_url('education-website').'/css/education-website.css');
         endif;
 	
@@ -479,9 +480,6 @@ Class UBC_Education_Theme_Options {
         function wp_head(){ ?>
 <style type="text/css" media="screen">
 			#ubc7-unit {background: #002145 !important;}
-			#container, .content, #frontpage-siderbar {
-				background: url(<?php //echo plugins_url('education-website')?>/img/debut_light.png) repeat #FFF !important;
-			}
 			ul.nav-tabs li a {
 				background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
 				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
@@ -545,9 +543,6 @@ Class UBC_Education_Theme_Options {
 			  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>); 
 			}
 			@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-			#container, .content, #frontpage-siderbar {
-					background: url(<?php echo plugins_url('education-website')?>/img/debut_light_@2X.png) repeat !important;
-			}
 			  #department-logo {
 				background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>;
 			  }
