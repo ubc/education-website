@@ -5,7 +5,6 @@
 
 
 jQuery(document).ready(function() {
-    
     jQuery("#education-main-colour").wpColorPicker({
         palettes: ['#002145', '#2F5D7C', '#5E869F', '#98B2C3', '#C3D0DB']
     });
@@ -64,6 +63,7 @@ jQuery(document).ready(function() {
         var hex =  "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
         return hex;
     }
+		
 	
 	if(jQuery('#ubc-collab-theme-options-education-enable-banner').attr('checked')){
         jQuery(".banner-enable").show();
@@ -78,4 +78,5 @@ jQuery(document).ready(function() {
 			jQuery(".banner-enable").slideUp();
 		}
 	});
+		
 });
