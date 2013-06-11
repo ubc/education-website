@@ -89,8 +89,8 @@ Class UBC_Education_Theme_Options {
      * @return void
      */
     function register_scripts() {
-//    	remove_action( 'admin_init', array( 'UBC_Collab_CLF', 'admin' ) );
-//		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
+    	remove_action( 'admin_init', array( 'UBC_Collab_CLF', 'admin' ) );
+		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
 
     	
     	//self::$add_script = true;
@@ -138,13 +138,13 @@ Class UBC_Education_Theme_Options {
 	 * @access public
 	 * @return void
 	 */
-//    function update_clf_settings(){
-//    	add_settings_section(
-//			'clf', 
-//			'UBC CLF', 
-//			'__return_false',
-//			'theme_options' 
-//		);
+    function update_clf_settings(){
+    	add_settings_section(
+			'clf', 
+			'UBC CLF', 
+			'__return_false',
+			'theme_options' 
+		);
 		
 		 //add_settings_field(
 			 //'clf-description',
@@ -164,36 +164,36 @@ Class UBC_Education_Theme_Options {
 	    );
 		*/
 		// UBC Campus Identifier
-//		add_settings_field(
-//			'clf-campus',
-//			__('Campus Identity', 'ubc_collab'),
-//			array('UBC_Collab_CLF', 'campus'),
-//			'theme_options',
-//			'clf'
-//		);
+		add_settings_field(
+			'clf-campus',
+			__('Campus Identity', 'ubc_collab'),
+			array('UBC_Collab_CLF', 'campus'),
+			'theme_options',
+			'clf'
+		);
 //		
 //		// UBC CLF Faculty Input Box
-//		add_settings_field(
-//		   'clf-unit-bar-faculty-unit',
-//		   __('Unit/Website Information', 'ubc_collab'),
-//		   array('UBC_Collab_CLF', 'unit_bar_faculty'),
-//		   'theme_options',
-//		   'clf'
-//	    );
+		add_settings_field(
+		   'clf-unit-bar-faculty-unit',
+		   __('Unit/Website Information', 'ubc_collab'),
+		   array('UBC_Collab_CLF', 'unit_bar_faculty'),
+		   'theme_options',
+		   'clf'
+	    );
 //		
 //		
 //		// Unit Contact Info for CLF Footer
-//		add_settings_field(
-//			'clf-unit-contact',
-//			__('Unit Contact Info', 'ubc_collab'),
-//			array('UBC_Collab_CLF', 'unit_contact'),
-//			'theme_options',
-//			'clf'
-//		);
+		add_settings_field(
+			'clf-unit-contact',
+			__('Unit Contact Info', 'ubc_collab'),
+			array('UBC_Collab_CLF', 'unit_contact'),
+			'theme_options',
+			'clf'
+		);
 //		
-//		wp_enqueue_style('farbtastic');
-//		wp_enqueue_script('farbtastic');
-//   }
+		wp_enqueue_style('farbtastic');
+		wp_enqueue_script('farbtastic');
+   }
    
     /**
      * admin function.
