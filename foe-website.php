@@ -7,7 +7,7 @@
   Version: 1
   Author: Amir Entezaralmahdi | Arts ISIT & David brabbins
   Licence: GPLv2
-  Author URI: http://isit.arts.ubc.ca
+  Author URI: http://educ.ubc.ca
  */
 
 Class UBC_Education_Theme_Options {
@@ -290,16 +290,20 @@ Class UBC_Education_Theme_Options {
         </div>
         <label><b>Unit/Website Banner and Chevron Options:</b><br />
         </label>
-        Find dimensions and templates for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.
+        Find resources for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.
         <form id="education-form" action="themes.php" method="post" enctype="multipart/form-data">
           <div class="brand-img-upload"><br />
             <?php UBC_Collab_Theme_Options::checkbox( 'education-enable-banner', 1, 'Enable Banner image upload?' ); ?>
           </div>
-          <div class="brand-img-upload banner-enable"><span><br />
+          <div class="brand-img-upload banner-enable">
+          Uncheck to remove banner.
+          <span><br />
             <strong>Banner Image:</strong></span>
             <?php  UBC_Collab_Theme_Options::text( 'foe-banner-image' ); ?>
             <input id="upload_banner_button" type="button" class="button" value="Upload">
-            <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-banner-image' ); ?>" /> </div>
+            <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-banner-image' ); ?>" /><br />
+            
+             </div>
             
           <div class="brand-img-upload"><span><strong>Regular Chevron Image:</strong></span>
             <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-image-regular' ); ?>
@@ -311,7 +315,6 @@ Class UBC_Education_Theme_Options {
             <input id="upload_retina_button" type="button" class="button" value="Upload">
             <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-chevron-image-retina' ); ?>" /> </div>
         </form>
-
 	<?php 
       } 
 		
@@ -322,29 +325,28 @@ Class UBC_Education_Theme_Options {
      * @return void
      */      
     function foe_hardcoded_options(){ ?>
-<div class="explanation"><a href="#" class="explanation-help">Info</a>
-  <div>The following are the description of hardcoded items and resources for a Faculty of Education Theme.</div>
-</div>
-<div id="education-hardcoded-box">
-  <label><b>The following features are hardcoded:</b></label>
-  <ol>
-  	<li>Blue on White UBC header</li>
-    <li>Faculty of Education Style</li>
-    <li>Background Texture</li>
-    <li>Department/ Unit Header</li>
-    <li>Circled <strong>Featured Images</strong> for pages. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
-    <li>Back to Top link</li>
-  </ol>
-</div>
-<div id="education-resources">
-  <label><b>Faculty of Education Resources:</b></label>
-  <ol>
-    <li><a href="http://clf.educ.ubc.ca/" target="_blank">Faculty of Education CLF</a></li>
-    <li><a href="http://wiki.ubc.ca/Documentation:UBC_Content_Management_System" target="_blank">WordPress/ CMS Wiki site</a></li>
-    <li><a href="http://clf.ubc.ca" target="_blank">UBC CLF</a></li>
-  </ol>
-</div>
-  <input name="ubc-collab-theme-options[clf-colour-theme]" type="hidden" value="bw"  checked='checked' class="on-change"  />
+        <div class="explanation"><a href="#" class="explanation-help">Info</a>
+          <div>The following are the description of hardcoded items and resources for a Faculty of Education Theme.</div>
+        </div>
+        <div id="education-hardcoded-box">
+          <label><b>The following features are hardcoded:</b></label>
+          <ol>
+            <li>Blue on White UBC header</li>
+            <li>Faculty of Education Style</li>
+            <li>Department/ Unit Header</li>
+            <li>Circled <strong>Featured Images</strong> for pages. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
+            <li>Back to Top link</li>
+          </ol>
+        </div>
+        <div id="education-resources">
+          <label><b>Faculty of Education Resources:</b></label>
+          <ol>
+            <li><a href="http://clf.educ.ubc.ca/" target="_blank">Faculty of Education CLF</a></li>
+            <li><a href="http://wiki.ubc.ca/Documentation:UBC_Content_Management_System" target="_blank">WordPress/ CMS Wiki site</a></li>
+            <li><a href="http://clf.ubc.ca" target="_blank">UBC CLF</a></li>
+          </ol>
+        </div>
+          <input name="ubc-collab-theme-options[clf-colour-theme]" type="hidden" value="bw"  checked='checked' class="on-change"  />
 
 <?php	
 
@@ -486,20 +488,8 @@ Class UBC_Education_Theme_Options {
      * Appends some of the dynamic css and js to the wordpress header
      */        
         function wp_head(){ ?>
-<style type="text/css" media="screen">
+	<style type="text/css" media="screen">
 			#ubc7-unit {background: #002145 !important;}
-			ul.nav-tabs li a {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-			}
-			ul.nav-tabs li.active a {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-			}
-			ul.nav-tabs>li>a:hover {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-			}
 			#ubc7-unit-menu .nav-collapse .nav > li > a:hover,
 			#ubc7-unit-menu .nav > li.active > a:hover,
 			#ubc7-unit-menu .nav-collapse .dropdown-menu a:hover,
@@ -525,12 +515,12 @@ Class UBC_Education_Theme_Options {
 			.carousel-caption {
 				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
 			}
-			#content h1,
-			#content h2,
-			#content h3,
-			#content h4,
-			#content h5,
-			#content h6,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
 			#content .hero-unit h1,
 			#frontpage-siderbar .tab-pane a,
 			a {
@@ -545,17 +535,35 @@ Class UBC_Education_Theme_Options {
 				border-bottom: 10px solid <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;	
 			}
 			#dept-brand {
-				background: url(<?php echo UBC_Collab_Theme_Options::get('foe-banner-image')?>) <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+				background: <?php if (UBC_Collab_Theme_Options::get( 'education-enable-banner') == '1') { 
+				
+				echo 'url(' . UBC_Collab_Theme_Options::get('foe-banner-image'). ') ';
+				
+				 } else {
+					 echo ''; } ?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>; 
 			}
 			#department-logo {
 			  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>); 
 			}
+						ul.nav-tabs li a {
+				background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+			}
+			ul.nav-tabs li.active a {
+				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+			}
+			ul.nav-tabs>li>a:hover {
+				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+			}
+
 			@media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 			  #department-logo {
 				background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>;
 			  }
 			}
-        </style>
+    </style>
 <?php
     } 
 }
