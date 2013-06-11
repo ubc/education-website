@@ -378,7 +378,7 @@ Class UBC_Education_Theme_Options {
 				'education-enable-banner' 		=> '1',
 				'foe-banner-image'    			=> plugins_url('education-website').'/img/banner.png',
 				'foe-chevron-image-regular'    	=>  plugins_url('education-website').'/img/faculty-chevron.png',
-				'foe-chevron-image-retina'    	=> plugins_url('education-website').'/img/faculty-chevron-@2x.png',
+				'foe-chevron-image-retina'    	=> plugins_url('education-website').'/img/faculty-chevron-@2x.png'
             );
 
             $options = array_merge( $options, $defaults );
