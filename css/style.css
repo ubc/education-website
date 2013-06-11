@@ -1,7 +1,7 @@
 /* 
     Document   : style
     Created on : 22-Mar-2013, 12:39:53 PM
-    Author     : Scott
+    Author     : David
     Description:
         Purpose of the stylesheet follows.
 */
@@ -12,10 +12,29 @@
 	width: 110px;
 	height: 20px;
 	overflow: visible;
+	position: relative;	
 }
 .wp-picker-container {
 	margin-left: 30px;
+	position: relative;	
 }
+#education-unit-colour-box {
+	position: relative;	
+}
+.main-color .wp-picker-holder {
+	position: relative;
+/*	margin-top: -40px;
+	margin-left: -384px;
+*/
+	z-index: 10;
+}
+.secondary-color .wp-picker-holder {
+	position: relative;
+/*	margin-top: -40px;
+	margin-left: -384px;
+*/
+}
+
 #education-unit-colour-box .ubc-collab-textarea, #education-unit-colour-box .ubc-collab-text-input {
 	width: 45%;
 }
