@@ -89,11 +89,11 @@ Class UBC_Education_Theme_Options {
      * @return void
      */
     function register_scripts() {
-    	remove_action( 'admin_init', array( 'UBC_Collab_CLF', 'admin' ) );
-		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
+//    	remove_action( 'admin_init', array( 'UBC_Collab_CLF', 'admin' ) );
+//		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
 
     	
-    	self::$add_script = true;
+    	//self::$add_script = true;
 		
 		// register the spotlight functions
         if( !is_admin() ):
@@ -138,13 +138,13 @@ Class UBC_Education_Theme_Options {
 	 * @access public
 	 * @return void
 	 */
-    function update_clf_settings(){
-    	add_settings_section(
-			'clf', // Unique identifier for the settings section
-			'UBC CLF', // Section title (we don't want one)
-			'__return_false', // Section callback (we don't want anything)
-			'theme_options' // Menu slug, used to uniquely identify the page; see ubc-collab-theme-options-add-page()
-		);
+//    function update_clf_settings(){
+//    	add_settings_section(
+//			'clf', 
+//			'UBC CLF', 
+//			'__return_false',
+//			'theme_options' 
+//		);
 		
 		 //add_settings_field(
 			 //'clf-description',
@@ -164,36 +164,36 @@ Class UBC_Education_Theme_Options {
 	    );
 		*/
 		// UBC Campus Identifier
-		add_settings_field(
-			'clf-campus',
-			__('Campus Identity', 'ubc_collab'),
-			array('UBC_Collab_CLF', 'campus'),
-			'theme_options',
-			'clf'
-		);
-		
-		// UBC CLF Faculty Input Box
-		add_settings_field(
-		   'clf-unit-bar-faculty-unit',
-		   __('Unit/Website Information', 'ubc_collab'),
-		   array('UBC_Collab_CLF', 'unit_bar_faculty'),
-		   'theme_options',
-		   'clf'
-	    );
-		
-		
-		// Unit Contact Info for CLF Footer
-		add_settings_field(
-			'clf-unit-contact',
-			__('Unit Contact Info', 'ubc_collab'),
-			array('UBC_Collab_CLF', 'unit_contact'),
-			'theme_options',
-			'clf'
-		);
-		
-		wp_enqueue_style('farbtastic');
-		wp_enqueue_script('farbtastic');
-   }
+//		add_settings_field(
+//			'clf-campus',
+//			__('Campus Identity', 'ubc_collab'),
+//			array('UBC_Collab_CLF', 'campus'),
+//			'theme_options',
+//			'clf'
+//		);
+//		
+//		// UBC CLF Faculty Input Box
+//		add_settings_field(
+//		   'clf-unit-bar-faculty-unit',
+//		   __('Unit/Website Information', 'ubc_collab'),
+//		   array('UBC_Collab_CLF', 'unit_bar_faculty'),
+//		   'theme_options',
+//		   'clf'
+//	    );
+//		
+//		
+//		// Unit Contact Info for CLF Footer
+//		add_settings_field(
+//			'clf-unit-contact',
+//			__('Unit Contact Info', 'ubc_collab'),
+//			array('UBC_Collab_CLF', 'unit_contact'),
+//			'theme_options',
+//			'clf'
+//		);
+//		
+//		wp_enqueue_style('farbtastic');
+//		wp_enqueue_script('farbtastic');
+//   }
    
     /**
      * admin function.
@@ -372,11 +372,10 @@ Class UBC_Education_Theme_Options {
             }
 
             $defaults = array(
-				'clf-colour-theme' 				=>'bw',
                 'education-main-colour'			=> '#2F5D7C',
-                'education-gradient-colour'		=> '#002145',
+                'education-gradient-colour'		=> '#2F5D7C',
                 'education-hover-colour'		=> '#002145',
-				'education-enable-banner' 		=> 'true',
+				'education-enable-banner' 		=> '1',
 				'foe-banner-image'    			=> plugins_url('education-website').'/img/banner.png',
 				'foe-chevron-image-regular'    	=>  plugins_url('education-website').'/img/faculty-chevron.png',
 				'foe-chevron-image-retina'    	=> plugins_url('education-website').'/img/faculty-chevron-@2x.png',
@@ -413,7 +412,6 @@ Class UBC_Education_Theme_Options {
 			$starter['foe-banner-image'] = UBC_Collab_Theme_Options::validate_text($input['foe-banner-image'], $starter['foe-banner-image'] );
 			$starter['foe-chevron-image-regular'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-image-regular'], $starter['foe-chevron-image-regular'] );
 			$starter['foe-chevron-image-retina'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-image-retina'], $starter['foe-chevron-image-retina'] );
-			$starter['clf-colour-theme'] = UBC_Collab_Theme_Options::validate_text($input['clf-colour-theme'], $starter['clf-colour-theme'] );
 			
 			            $output = array_merge($output, $starter);
 
