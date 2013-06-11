@@ -93,7 +93,7 @@ Class UBC_Education_Theme_Options {
 		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
 
     	
-    	//self::$add_script = true;
+    	self::$add_script = true;
 		
 		// register the spotlight functions
         if( !is_admin() ):
