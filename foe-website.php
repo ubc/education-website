@@ -19,7 +19,7 @@ Class UBC_Education_Theme_Options {
      * init function.
      * 
      * @access public
-     * @return void
+     * @return void	
      */
     function init() {
 		
@@ -35,6 +35,7 @@ Class UBC_Education_Theme_Options {
         wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
         // include Education specific javascript file
         wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
+        wp_register_script('education-font-fix', plugins_url('education-website') . '/js/jquery.textfill.min.js');
         add_action( 'init', array(__CLASS__, 'register_scripts' ), 12 );
         add_action('ubc_collab_theme_options_ui', array(__CLASS__, 'education_ui'));
         add_action( 'admin_init',array(__CLASS__, 'admin' ) );
@@ -90,6 +91,7 @@ Class UBC_Education_Theme_Options {
     function register_scripts() {
     	remove_action( 'admin_init', array( 'UBC_Collab_CLF', 'admin' ) );
 		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
+
     	
     	self::$add_script = true;
 		
@@ -266,7 +268,8 @@ Class UBC_Education_Theme_Options {
                   <br/>
         -->
    <?php
-            }
+   	}
+	
     /**
      * foe_brand_options.
      * Display Faculty images
@@ -310,7 +313,8 @@ Class UBC_Education_Theme_Options {
         </form>
 
 	<?php 
-        } 
+      } 
+		
     /**
      * foe_hardcoded_options.
      * Display Hardcoded info and Faculty Resources
@@ -380,6 +384,7 @@ Class UBC_Education_Theme_Options {
 
             return $options;
     }  
+	
 	/**
 	 * Sanitize and validate form input. Accepts an array, return a sanitized array.
 	 *
@@ -412,6 +417,7 @@ Class UBC_Education_Theme_Options {
 
             return $output;            
         }
+		
 	 /**
      * education_theme_styles
      * Adds the Faculty of Education Stylesheet
@@ -426,25 +432,27 @@ Class UBC_Education_Theme_Options {
 			
 			  // enqueing:
 			  wp_enqueue_style( 'foe-clf' );
-			}
+		}
+					
 	 /**
      * output_foe_brand_header
      * Adds the FOE brand header
      */         
 
 	function faculty_plugin_before_header_widget(){ ?>
+    
             <div id="dept-brand" class=" row-fluid expand">
                  <div id="department-logo" class="row-fluid">
                    <a title="<?php echo get_bloginfo() ?>"  href="<?php echo get_bloginfo('url') ?>"><?php echo get_bloginfo() ?></a>
                </div>
             </div>
-        <?php
+       <?php
                 }
          /**
          * output_foe_featured_img
          * Adds featured images to WP pages
          */         
-            function output_foe_featured_img(){
+         function output_foe_featured_img(){
             if ( is_page() ) {
                 if (has_post_thumbnail()) {
                   $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(),'full', true);
@@ -471,7 +479,7 @@ Class UBC_Education_Theme_Options {
 		</div>
 		<!-- Back to Top End --> 
 		';
-            }
+     }
 					
       /**
      * wp_head
@@ -542,7 +550,7 @@ Class UBC_Education_Theme_Options {
 			#department-logo {
 			  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>); 
 			}
-			@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+			@media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 			  #department-logo {
 				background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>;
 			  }
