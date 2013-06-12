@@ -38,7 +38,7 @@ Class UBC_Education_Theme_Options {
         wp_register_script('education-font-fix', plugins_url('education-website') . '/js/jquery.textfill.min.js');
         add_action( 'init', array(__CLASS__, 'register_scripts' ), 12 );
         add_action('ubc_collab_theme_options_ui', array(__CLASS__, 'education_ui'));
-        add_action( 'admin_init',array(__CLASS__, 'admin' ) );
+        add_action( 'admin_init',array(__CLASS__, 'admin' ), 1);
         add_filter( 'ubc_collab_default_theme_options', array(__CLASS__, 'default_values'), 10,1 );
         add_filter( 'ubc_collab_theme_options_validate', array(__CLASS__, 'validate'), 10, 2 );      	
         add_action( 'wp_head', array( __CLASS__,'wp_head' ) );
@@ -89,12 +89,6 @@ Class UBC_Education_Theme_Options {
      * @return void
      */
     function register_scripts() {
-    	remove_action( 'admin_init', array( 'UBC_Collab_CLF', 'admin' ) );
-		add_action( 'admin_init',array(__CLASS__, 'update_clf_settings' ), 9 );
-
-    	
-    	self::$add_script = true;
-		
 		// register the spotlight functions
         if( !is_admin() ):
         	wp_register_script( 'ubc-collab-education', plugins_url('education-website').'/js/education-website.js', array( 'jquery' ), '0.1', true );
@@ -132,69 +126,6 @@ Class UBC_Education_Theme_Options {
 		 wp_enqueue_script('foe-upload');
      }
 
-	/**
-	 * update_clf_settings.
-	 * 
-	 * @access public
-	 * @return void
-	 */
-    function update_clf_settings(){
-    	add_settings_section(
-			'clf', 
-			'UBC CLF', 
-			'__return_false',
-			'theme_options' 
-		);
-		
-		 //add_settings_field(
-			 //'clf-description',
-			 //'',
-			 //array(__CLASS__, 'clf_description'),
-			 //'theme_options',
-			 //'clf'
-		 //);
-		
-		// UBC CLF Colour Themes
-		/* add_settings_field(
-		   'clf-colour-theme',
-		   __('Standard CLF Colour Options', 'ubc_collab'),
-		   array(__CLASS__, 'theme_options'),
-		   'theme_options',
-		   'clf'
-	    );
-		*/
-		// UBC Campus Identifier
-		add_settings_field(
-			'clf-campus',
-			__('Campus Identity', 'ubc_collab'),
-			array('UBC_Collab_CLF', 'campus'),
-			'theme_options',
-			'clf'
-		);
-//		
-//		// UBC CLF Faculty Input Box
-		add_settings_field(
-		   'clf-unit-bar-faculty-unit',
-		   __('Unit/Website Information', 'ubc_collab'),
-		   array('UBC_Collab_CLF', 'unit_bar_faculty'),
-		   'theme_options',
-		   'clf'
-	    );
-//		
-//		
-//		// Unit Contact Info for CLF Footer
-		add_settings_field(
-			'clf-unit-contact',
-			__('Unit Contact Info', 'ubc_collab'),
-			array('UBC_Collab_CLF', 'unit_contact'),
-			'theme_options',
-			'clf'
-		);
-//		
-		wp_enqueue_style('farbtastic');
-		wp_enqueue_script('farbtastic');
-   }
-   
     /**
      * admin function.
      * 
@@ -373,7 +304,7 @@ Class UBC_Education_Theme_Options {
 
             $defaults = array(
                 'education-main-colour'			=> '#2F5D7C',
-                'education-gradient-colour'		=> '#2F5D7C',
+                'education-gradient-colour'		=> '#3f7ea7',
                 'education-hover-colour'		=> '#002145',
 				'education-enable-banner' 		=> '1',
 				'foe-banner-image'    			=> plugins_url('education-website').'/img/banner.png',
@@ -442,6 +373,7 @@ Class UBC_Education_Theme_Options {
 	function faculty_plugin_before_header_widget(){ ?>
     
             <div id="dept-brand" class=" row-fluid expand">
+            <a class="faculty-link" href="http://educ.ubc.ca" title="Faculty of Education">Faculty of Education</a>
                  <div id="department-logo" class="row-fluid">
                    <a title="<?php echo get_bloginfo() ?>"  href="<?php echo get_bloginfo('url') ?>"><?php echo get_bloginfo() ?></a>
                </div>
