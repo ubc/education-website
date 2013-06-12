@@ -35,7 +35,6 @@ Class UBC_Education_Theme_Options {
         wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
         // include Education specific javascript file
         wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
-        wp_register_script('education-font-fix', plugins_url('education-website') . '/js/jquery.textfill.min.js');
         add_action( 'init', array(__CLASS__, 'register_scripts' ), 12 );
         add_action('ubc_collab_theme_options_ui', array(__CLASS__, 'education_ui'));
         add_action( 'admin_init',array(__CLASS__, 'admin' ), 1);
@@ -303,13 +302,13 @@ Class UBC_Education_Theme_Options {
             }
 
             $defaults = array(
-                'education-main-colour'			=> '#2F5D7C',
-                'education-gradient-colour'		=> '#3f7ea7',
-                'education-hover-colour'		=> '#002145',
-				'education-enable-banner' 		=> '1',
-				'foe-banner-image'    			=> plugins_url('education-website').'/img/banner.png',
-				'foe-chevron-image-regular'    	=>  plugins_url('education-website').'/img/faculty-chevron.png',
-				'foe-chevron-image-retina'    	=> plugins_url('education-website').'/img/faculty-chevron-@2x.png'
+                'education-main-colour'			=> "#2F5D7C",
+                'education-gradient-colour'		=> "#3f7ea7",
+                'education-hover-colour'		=> "#002145",
+				'education-enable-banner' 		=> "1",
+				'foe-banner-image'    			=> plugins_url('education-website')."/img/banner.png",
+				'foe-chevron-image-regular'    	=>  plugins_url('education-website')."/img/faculty-chevron.png",
+				'foe-chevron-image-retina'    	=> plugins_url('education-website')."/img/faculty-chevron-@2x.png"
             );
 
             $options = array_merge( $options, $defaults );
@@ -355,14 +354,10 @@ Class UBC_Education_Theme_Options {
      */         
 		function education_theme_styles()  
 			{ 
-			  wp_register_style( 'foe-clf', 
-				plugins_url('education-website') . '/css/global.css', 
-				array(), 
-				'20120208', 
-				'all' );
+			  wp_register_style( 'education-clf', plugins_url('education-website') . "/css/global.css", true );
 			
 			  // enqueing:
-			  wp_enqueue_style( 'foe-clf' );
+			  wp_enqueue_style( 'education-clf' );
 		}
 					
 	 /**
@@ -388,9 +383,9 @@ Class UBC_Education_Theme_Options {
             if ( is_page() ) {
                 if (has_post_thumbnail()) {
                   $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(),'full', true);
-                      echo '<img class="pull-right visible-desktop visible-tablet alignright featured-images-pages" src="' . $image_url[0] .'" title="' . the_title_attribute('echo=0') . '" alt="' . the_title_attribute('echo=0') . '" />';
+                      echo "<img class=\"pull-right visible-desktop visible-tablet alignright featured-images-pages\" src=\"" . $image_url[0] ."\" title=\"" . the_title_attribute('echo=0') . "\" alt=\"" . the_title_attribute('echo=0') . "\" />";
                 } else {
-                    echo '';
+                    echo "";
                 }
             }
         }
@@ -401,16 +396,16 @@ Class UBC_Education_Theme_Options {
      */         
 
 	function output_back_to_top(){
-				echo '<div id="section-6" class="widget section-widget widget-section-widget content-back-top">
-		  <div class="widget-wrap widget-inside">
+				echo "<div id=\"section-6\" class=\"widget section-widget widget-section-widget content-back-top\">
+		  <div class=\"widget-wrap widget-inside\">
 			<hr />
-			<div class="row-fluid ubc7-back-to-top clearfix">
-			  <div class="span4"><a href="#" title="Back to top">Back to top <span class="ubc7-arrow up-arrow grey"></span></a></div>
+			<div class=\"row-fluid ubc7-back-to-top clearfix\">
+			  <div class=\"span4\"><a href=\"#\" title=\"Back to top\">Back to top <span class=\"ubc7-arrow up-arrow grey\"></span></a></div>
 			</div>
 		  </div>
 		</div>
 		<!-- Back to Top End --> 
-		';
+		";
      }
 					
       /**
@@ -418,82 +413,82 @@ Class UBC_Education_Theme_Options {
      * Appends some of the dynamic css and js to the wordpress header
      */        
         function wp_head(){ ?>
-	<style type="text/css" media="screen">
-			#ubc7-unit {background: #002145 !important;}
-			#ubc7-unit-menu .nav-collapse .nav > li > a:hover,
-			#ubc7-unit-menu .nav > li.active > a:hover,
-			#ubc7-unit-menu .nav-collapse .dropdown-menu a:hover,
-			#ubc7-unit-menu .btn-group:hover .btn,
-			#ubc7-unit-menu .nav > li.active > .btn-group:hover .btn,
-			#ubc7-unit-menu .nav > li.active > a,
-			#ubc7-unit-menu .nav > li.active > .btn-group,
-			#ubc7-unit-menu .current-menu-ancestor, .current-menu-parent,
-			#ubc7-unit-menu .current-page-parent, .current_page_parent,
-			#ubc7-unit-menu .current-page-ancestor,
-			#ubc7-unit-menu .nav > li.current-page-ancestor > a,
-			#ubc7-unit-menu .nav > li.current-page-ancestor .btn-group > a,
-			#ubc7-unit-menu .nav > li.current-page-ancestor.dropdown .btn-group button,
-			.sidenav a:hover,
-			.accordion.sidenav .single a.opened,
-			.accordion.sidenav .single a.opened:hover,
-			.sidenav .accordion-heading:hover,
-			.accordion-heading a:hover,
-			.sidenav .accordion-heading .accordion-toggle:hover,
-			.sidenav .accordion-group .accordion-inner>a.opened,
-			.simple-custom-menu .active a,
-			.simple-custom-menu a:hover,
-			.carousel-caption {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-			}
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6,
-			#content .hero-unit h1,
-			#frontpage-siderbar .tab-pane a,
-			a {
-			 color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
-			}
-			a:hover {
-			 color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
-			}
-
-			.sidenav {
-				border: 0;
-				border-bottom: 10px solid <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;	
-			}
-			#dept-brand {
-				background: <?php if (UBC_Collab_Theme_Options::get( 'education-enable-banner') == '1') { 
-				
-				echo 'url(' . UBC_Collab_Theme_Options::get('foe-banner-image'). ') ';
-				
-				 } else {
-					 echo ''; } ?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>; 
-			}
-			#department-logo {
-			  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>); 
-			}
-						ul.nav-tabs li a {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-			}
-			ul.nav-tabs li.active a {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-			}
-			ul.nav-tabs>li>a:hover {
-				background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-			}
-
-			@media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-			  #department-logo {
-				background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>;
-			  }
-			}
-    </style>
+			<style type="text/css" media="screen">
+                #ubc7-unit {background: #002145 !important;}
+                #ubc7-unit-menu .nav-collapse .nav > li > a:hover,
+                #ubc7-unit-menu .nav > li.active > a:hover,
+                #ubc7-unit-menu .nav-collapse .dropdown-menu a:hover,
+                #ubc7-unit-menu .btn-group:hover .btn,
+                #ubc7-unit-menu .nav > li.active > .btn-group:hover .btn,
+                #ubc7-unit-menu .nav > li.active > a,
+                #ubc7-unit-menu .nav > li.active > .btn-group,
+                #ubc7-unit-menu .current-menu-ancestor, .current-menu-parent,
+                #ubc7-unit-menu .current-page-parent, .current_page_parent,
+                #ubc7-unit-menu .current-page-ancestor,
+                #ubc7-unit-menu .nav > li.current-page-ancestor > a,
+                #ubc7-unit-menu .nav > li.current-page-ancestor .btn-group > a,
+                #ubc7-unit-menu .nav > li.current-page-ancestor.dropdown .btn-group button,
+                .sidenav a:hover,
+                .accordion.sidenav .single a.opened,
+                .accordion.sidenav .single a.opened:hover,
+                .sidenav .accordion-heading:hover,
+                .accordion-heading a:hover,
+                .sidenav .accordion-heading .accordion-toggle:hover,
+                .sidenav .accordion-group .accordion-inner>a.opened,
+                .simple-custom-menu .active a,
+                .simple-custom-menu a:hover,
+                .carousel-caption {
+                    background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+                }
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                #content .hero-unit h1,
+                #frontpage-siderbar .tab-pane a,
+                a {
+                 color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+                }
+                a:hover {
+                 color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+                }
+    
+                .sidenav {
+                    border: 0;
+                    border-bottom: 10px solid <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;	
+                }
+                #dept-brand {
+                    background: <?php if (UBC_Collab_Theme_Options::get( 'education-enable-banner') == '1') { 
+                    
+                    echo 'url(' . UBC_Collab_Theme_Options::get('foe-banner-image'). ') ';
+                    
+                     } else {
+                         echo ''; } ?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>; 
+                }
+                #department-logo {
+                  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>); 
+                }
+                ul.nav-tabs li a {
+                    background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+                    border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+                }
+                ul.nav-tabs li.active a {
+                    background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+                    border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+                }
+                ul.nav-tabs>li>a:hover {
+                    background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+                    border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+                }
+    
+                @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                  #department-logo {
+                    background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>;
+                  }
+                }
+            </style>
 <?php
     } 
 }
