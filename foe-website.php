@@ -225,7 +225,6 @@ Class UBC_Education_Theme_Options {
         <b>Unit/Website Banner and Chevron Options:</b><br />
         
         Find resources for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.
-        <form id="education-form">
           <div class="brand-img-upload"><br />
             <?php UBC_Collab_Theme_Options::checkbox( 'education-enable-banner', 1, 'Enable Banner image upload?' ); ?>
           </div>
@@ -247,7 +246,6 @@ Class UBC_Education_Theme_Options {
             <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-image-retina' ); ?>
             <input id="upload_retina_button" type="button" class="button" value="Upload">
             <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-chevron-image-retina' ); ?>" /> </div>
-        </form>
 	<?php 
       } 
 		
