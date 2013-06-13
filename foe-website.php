@@ -455,7 +455,7 @@ Class UBC_Education_Theme_Options {
 				}
 				 @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 					#department-logo {
-					 background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>;
+					 background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>);
 					}
 				}
             </style>
