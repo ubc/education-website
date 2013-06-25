@@ -4,7 +4,7 @@
   Plugin Name: UBC Education Website
   Plugin URI:  http://educ.ubc.ca
   Description: Transforms the UBC Collab Theme into an Education website | Note: This plugin will only work on wp-hybrid-clf theme
-  Version: 1
+  Version: 1.1
   Author: Amir Entezaralmahdi | Arts ISIT & David brabbins
   Licence: GPLv2
   Author URI: http://educ.ubc.ca
