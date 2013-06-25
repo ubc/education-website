@@ -62,10 +62,6 @@ ul.nav {
 		background: #FFF;
 	}
 }
-
-#ubc7-carousel .carousel-caption, .ubc-carousel .carousel-caption, #ubc7-carousel-controller, .ubc7-carousel-controller {
-	background: #2F5D7C;
-}
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 #dept-brand {
 	height: 67px;
@@ -109,10 +105,7 @@ ul.nav {
 	}
 }
 
-/*----------------------------------------- Front Page: Includes homepage sidebars, */
-.home #content img.featured-images-pages {
-	margin: 0 0 10px 10px;
-}
+/*----------------------------------------- Front Page: Includes homepage sidebars, and Carousel */
 body {
 	&.home-layout-option3, &.home-layout-option2, &.home-layout-option5 {
 	
@@ -180,13 +173,16 @@ body {
 #my-carousel {
 	margin-top: 15px;
 }
+.carousel-caption a:hover {
+    color: #fff;   
+}
 .home #primary-secondary {
 	display: none;
 }
 .home.home-default #primary-secondary {
 	display: block;
 }
-/*----------------------------------------- Content- Entry Header Styles and Container Styles*/
+/*----------------------------------------- Content- Entry Header Styles, Container Styles, Breadcrumbs*/
 .breadcrumb {
 	height: auto;
 	margin: 0 0 0;
@@ -614,7 +610,7 @@ color: #fff;
 @media(min-width:767px) {
 /*----------------------------------------- Primary Styles*/
 #container, .home.home-default #container {
-	padding-top: 55px !important;
+	padding-top: 40px !important;
 }
 .home #container {
 	padding-top: 15px !important;
@@ -624,7 +620,7 @@ color: #fff;
 #department-logo {
 	margin: 5px 0 0 -15px;
 	width: 202px;
-	height: 116px;
+	height: 95px;
 	background-position: 100%;
 	h1 {
 		display: none;
