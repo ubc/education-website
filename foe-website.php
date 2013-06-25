@@ -4,7 +4,7 @@
   Plugin Name: UBC Education Website
   Plugin URI:  http://educ.ubc.ca
   Description: Transforms the UBC Collab Theme into an Education website | Note: This plugin will only work on wp-hybrid-clf theme
-  Version: 1
+  Version: 1.1
   Author: Amir Entezaralmahdi | Arts ISIT & David brabbins
   Licence: GPLv2
   Author URI: http://educ.ubc.ca
@@ -35,7 +35,7 @@ Class UBC_Education_Theme_Options {
         wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
         // include Education specific javascript file
         wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
-		
+
         add_action( 'init', array(__CLASS__, 'register_scripts' ), 12 );
 		
         add_action('ubc_collab_theme_options_ui', array(__CLASS__, 'education_ui'));
@@ -47,7 +47,7 @@ Class UBC_Education_Theme_Options {
         add_filter( 'ubc_collab_theme_options_validate', array(__CLASS__, 'validate'), 10, 2 );  
 		    	
         add_action( 'wp_head', array( __CLASS__,'wp_head' ) );
-		
+				
 		//foe uploader scripts
 		add_action('admin_print_scripts', array(__CLASS__,'education_upload_scripts' ) ); 
 		add_action('admin_enqueue_scripts', array(__CLASS__,'foe_uploader_options_enqueue_scripts' ) );
@@ -126,8 +126,8 @@ Class UBC_Education_Theme_Options {
      function education_ui(){
         wp_enqueue_style('education-theme-option-style');
         wp_enqueue_script('education-theme-option-script' );
-		 wp_enqueue_script('education-theme-option-media-script' );
-		 wp_enqueue_script('foe-upload');
+		wp_enqueue_script('education-theme-option-media-script' );
+		wp_enqueue_script('foe-upload');
      }
 
     /**
@@ -367,23 +367,24 @@ Class UBC_Education_Theme_Options {
 	function faculty_plugin_before_header_widget(){ ?>
     
             <div id="dept-brand" class=" row-fluid expand">
-            <a class="faculty-link" href="<?php echo self::$faculty_main_homepage ?>" title="Faculty of Education">Faculty of Education</a>
                  <div id="department-logo" class="row-fluid">
                    <a title="<?php echo get_bloginfo() ?>"  href="<?php echo get_bloginfo('url') ?>"><?php echo get_bloginfo() ?></a>
                </div>
             </div>
        <?php
                 }
+
          /**
          * output_foe_featured_img
          * Adds featured images to WP pages
          */         
          function output_foe_featured_img(){
-            if ( is_page() ) {
+            if ( is_page() && ! is_front_page() && ! is_home() ) {
                 if (has_post_thumbnail()) {
                   $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(),'full', true);
                       echo "<img class=\"pull-right visible-desktop visible-tablet alignright featured-images-pages\" src=\"" . $image_url[0] ."\" title=\"" . the_title_attribute('echo=0') . "\" alt=\"" . the_title_attribute('echo=0') . "\" />";
-                } else {
+				
+			} else {
                     echo "";
                 }
             }
