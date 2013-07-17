@@ -1,6 +1,6 @@
 === Education Website ===
 Contributors: brabbins
-Version: 1
+Version: 1.0.1
 Donate link: n/a
 Tags: custom
 Requires at least: 3.5
