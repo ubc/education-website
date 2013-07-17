@@ -4,7 +4,7 @@
   Plugin Name: UBC Education Website
   Plugin URI:  http://educ.ubc.ca
   Description: Transforms the UBC Collab Theme into an Education website | Note: This plugin will only work on wp-hybrid-clf theme
-  Version: 1.1
+  Version: 1.1.1
   Author: Amir Entezaralmahdi | Arts ISIT & David brabbins
   Licence: GPLv2
   Author URI: http://educ.ubc.ca
@@ -417,7 +417,7 @@ Class UBC_Education_Theme_Options {
                 #ubc7-unit {
 				 background: #002145 !important;
 				}
-				#ubc7-unit-menu .nav-collapse .nav > li > a:hover,  #ubc7-unit-menu .nav > li.active > a:hover,  #ubc7-unit-menu .nav-collapse .dropdown-menu a:hover,  #ubc7-unit-menu .btn-group:hover .btn,  #ubc7-unit-menu .nav > li.active > .btn-group:hover .btn,  #ubc7-unit-menu .nav > li.active > a,  #ubc7-unit-menu .nav > li.active > .btn-group,  #ubc7-unit-menu .current-menu-ancestor, .current-menu-parent,  #ubc7-unit-menu .current-page-parent, .current_page_parent,  #ubc7-unit-menu .current-page-ancestor,  #ubc7-unit-menu .nav > li.current-page-ancestor > a,  #ubc7-unit-menu .nav > li.current-page-ancestor .btn-group > a,  #ubc7-unit-menu .nav > li.current-page-ancestor.dropdown .btn-group button,  .sidenav a:hover,  .accordion.sidenav .single a.opened,  .accordion.sidenav .single a.opened:hover,  .sidenav .accordion-heading:hover,  .accordion-heading a:hover,  .sidenav .accordion-heading .accordion-toggle:hover,  .sidenav .accordion-group .accordion-inner>a.opened,  .simple-custom-menu .active a,  .simple-custom-menu a:hover,  .carousel-caption {
+				#ubc7-unit-menu .nav-collapse .nav > li > a:hover, #ubc7-unit-menu .nav > li.active > a:hover, #ubc7-unit-menu .nav-collapse .dropdown-menu a:hover, #ubc7-unit-menu .btn-group:hover .btn, #ubc7-unit-menu .nav > li.active > .btn-group:hover .btn, #ubc7-unit-menu .nav > li.active > a, #ubc7-unit-menu .nav > li.active > .btn-group, #ubc7-unit-menu .current-menu-ancestor, .current-menu-parent, #ubc7-unit-menu .current-page-parent, .current_page_parent, #ubc7-unit-menu .current-page-ancestor, #ubc7-unit-menu .nav > li.current-page-ancestor > a, #ubc7-unit-menu .nav > li.current-page-ancestor .btn-group > a, #ubc7-unit-menu .nav > li.current-page-ancestor.dropdown .btn-group button,  .sidenav a:hover,  .accordion.sidenav .single a.opened,  .accordion.sidenav .single a.opened:hover,  .sidenav .accordion-heading .accordion-toggle:hover,  .sidenav .accordion-group .accordion-inner>a.opened,  .sidenav .accordion-heading:hover,  .sidenav .accordion-heading a:hover,  .sidenav .accordion-heading:hover a:focus,  .sidenav .accordion-heading:hover a:active,  .sidenav .accordion-heading:hover .accordion-toggle,  .simple-custom-menu .active a,  .simple-custom-menu a:hover,  .carousel-caption {
 				 background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
 				}
 				h1,  h2,  h3,  h4,  h5,  h6,  #content .hero-unit h1,  #frontpage-siderbar .tab-pane a,  a {
