@@ -40,30 +40,35 @@ h1, h2, h3, h4, h5, h6, .hero-unit h1 {
 	padding-top: 15px !important;
 }
 
-
 /*----------------------------------------- Top Navigation*/
 ul.nav {
 	margin-bottom: 0;
 }
-#ubc7-unit-menu {
-	.nav > li.active > a, .nav > li.active > .btn-group > a, .nav > li.current-page-ancestor > a, .nav > li.current-page-ancestor .btn-group > a {
-		background: #002145;
-		color: #FFF;
+#ubc7-unit-menu, #ubc7-unit-alternate-navigation {
+
+	.nav > li {
+		&.active > a, &.active > .btn-group > a, &.current-page-ancestor > a, &.current-page-ancestor .btn-group > a, &.current-post-parent>a, &.current-menu-parent .btn-group > a {
+			color: #FFF;
+		}
 	}
 	&.navbar .nav>.active>a, .nav>li.active>.btn-group {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
 	}
-	.current_page_item .btn-group .ubc7-arrow.down-arrow, .current-page-ancestor .btn-group .ubc7-arrow.down-arrow {
+	.current_page_item .btn-group .ubc7-arrow.down-arrow, .current-page-ancestor .btn-group .ubc7-arrow.down-arrow, .current-menu-parent .btn-group .ubc7-arrow.down-arrow, .current-menu-item .btn-group .ubc7-arrow.down-arrow {
 		background-position: -1178px -227px!important;
 	}
 	.dropdown-menu  a {
 		background: #FFF;
 	}
 }
+#ubc7-unit-menu .dropdown:hover .btn-group .ubc7-arrow {
+		background-position: -1178px -226px!important;
+	}
+
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
-#dept-brand {
+.dept-brand {
 	height: 67px;
 	position: relative;
 	
@@ -74,15 +79,10 @@ ul.nav {
 		width: 98%;
 	}
 }
-.single-page #dept-brand {
+.single-page .dept-brand {
 	height: auto;
 }
-#dept-brand h1 {
-	font-size: 350%;
-	color: #FFF;
-	letter-spacing: 3px;
-}
-#department-logo {
+.department-logo {
 	position: relative;
 	margin: 5px 0 0 -10px;
 	text-indent: 200%;
@@ -297,7 +297,7 @@ body {
 	}
 	.opened .right-arrow {
 	background-position: -1113px -227px!important;
-	}	
+	}
 }
 .sidenavigation .accordion-group .accordion-heading.active, .sidenavigation .accordion-group .accordion-heading.active a, .sidenavigation .accordion-group .accordion-heading.active .accordion-toggle, .accordion.sidenav .single a.opened {
 	background: #2F5D7C;
@@ -590,7 +590,23 @@ color: #fff;
 }
 
 /*----------------------------------------- @Media | Responsive Design ----------------------------------------------------------*/
- @media(min-width:400px) {
+ @media(max-width:400px) {
+/*----------------------------------------- Front Page*/
+#frontpage-siderbar {	
+		 .widget-inside {
+			height: auto;
+			min-height: auto;
+			max-height: none;
+			
+			.tab-content {
+				height: auto;
+				min-height: auto;
+				max-height: none;
+			}
+		}
+	}
+}
+ @media(max-width:767px) {
 /*----------------------------------------- Front Page*/
 #frontpage-siderbar {	
 		 .widget-inside {
@@ -617,7 +633,7 @@ color: #fff;
 }
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
-#department-logo {
+.department-logo {
 	margin: 5px 0 0 -15px;
 	width: 202px;
 	height: 95px;
@@ -680,12 +696,6 @@ color: #fff;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
   	box-sizing: border-box;
-			
-	.page-title, .entry-title, .archive-title, .category-title {
-		border-bottom: 1px solid #d7e0e7;
-		padding-bottom: 9px;
-		margin: 0 0 10px 0;
-	}
 }
 
 /*----------------------------------------- Sidebar And Secondary Navigation*/
@@ -731,7 +741,7 @@ color: #fff;
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 /*----------------------------------------- Front Page*/
 /*----------------------------------------- Content- Entry Header Styles and Container Styles*/
-#department-logo {
+.department-logo {
 	background-position: 100% 0;
 	width: 202px;
 	margin: 5px 0 0 0px;
@@ -750,7 +760,7 @@ color: #fff;
 /*----------------------------------------- Primary Styles*/
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
-#department-logo {
+.department-logo {
 	background-position: 53% 0;
 	width: 269px;
 	margin: 5px 0 0 0px;
@@ -997,7 +1007,7 @@ border-bottom: 1px solid #CCC;
 /*----------------------------------------- Special Features- Accordion, Tabs, List Thumbnails and other */
 }
 @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	#department-logo {
+	.department-logo {
 		background-size: 701px 116px;
 	}
 }
@@ -1020,4 +1030,155 @@ border-bottom: 1px solid #CCC;
 #ubc7-unit-menu .nav > li > a {
     padding-top: 10px !important;
 }
+}
+/*----------------------------------------- Color Options */
+.ubc-primary {
+ color: #002145   
+}
+.ubc-primary-bg {
+ background-color: #002145   
+}
+.ubc-secondary {
+ color: #2F5D7C   
+}
+.ubc-secondary-bg {
+ background-color: #2F5D7C   
+}
+.ubc-dark-grey {
+ color: #5E869F
+}
+.ubc-dark-grey-bg {
+ background-color: #5E869F
+}
+.ubc-medium-grey {
+ color: #98B2C3   
+}
+.ubc-medium-grey-bg {
+ background-color: #98B2C3   
+}
+.ubc-light-grey {
+ color: #C3D0DB   
+}
+.ubc-light-grey-bg {
+ background-color: #C3D0DB   
+}
+.turquoise {
+	color: #1abc9c;
+}
+.turquoise-bg {
+	background-color: #1abc9c;
+}
+.emerald {
+	color: #2ecc71;
+}
+.emerald-bg {
+	background-color: #2ecc71;
+}
+.peter-river {
+	color: #3498db;
+}
+.peter-river-bg {
+	background-color: #3498db;
+}
+.amethyst {
+	color: #9b59b6;
+}
+.amethyst-bg {
+	background-color: #9b59b6;
+}
+.wet-asphalt {
+	color: #34495e;
+}
+.wet-asphalt-bg {
+	background-color: #34495e;
+}
+.green-sea {
+	color: #16a085;
+}
+.green-sea-bg {
+	background-color: #16a085;
+}
+.nephritis {
+	color: #27ae60;
+}
+.nephritis-bg {
+	background-color: #27ae60;
+}
+.belize-hole {
+	color: #2980b9;
+}
+.belize-hole-bg {
+	background-color: #2980b9;
+}
+.westeria {
+	color: #8e44ad;
+}
+.westeria-bg {
+	background-color: #8e44ad;
+}
+.midnight-blue {
+	color: #2c3e50;
+}
+.midnight-blue-bg {
+	background-color: #2c3e50;
+}
+.sun-flower {
+	color: #f1c40f;
+}
+.sun-flower-bg {
+	background-color: #f1c40f;
+}
+.carrot {
+	color: #e67e22;
+}
+.carrot-bg {
+	background-color: #e67e22;
+}
+.alizarin {
+	color: #e74c3c;
+}
+.alizarin-bg {
+	background-color: #e74c3c;
+}
+.clouds {
+	color: #ecf0f1;
+}
+.clouds-bg {
+	background-color: #ecf0f1;
+}
+.concrete {
+	color: #95a5a6;
+}
+.concrete-bg {
+	background-color: #95a5a6;
+}
+.orange {
+	color: #f39c12;
+}
+.orange-bg {
+	background-color: #f39c12;
+}
+.pumpkin {
+	color: #d35400;
+}
+.pumpkin-bg {
+	background-color: #d35400;
+}
+.pomegranate {
+	color: #c0392b;
+}
+.pomegranate-bg {
+	background-color: #c0392b;
+}
+.silver {
+	color: #bdc3c7;
+}
+.silver-bg {
+	background-color: #bdc3c7;
+}
+.asbestos {
+	color: #7f8c8d;
+}
+.asbestos-bg {
+	background-color: #7f8c8d;
 }
