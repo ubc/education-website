@@ -4,8 +4,8 @@
   Plugin Name: UBC Education Website
   Plugin URI:  http://educ.ubc.ca
   Description: Transforms the UBC Collab Theme into an Education website | Note: This plugin will only work on wp-hybrid-clf theme
-  Version: 1.0.1
-  Author: Amir Entezaralmahdi | Arts ISIT & David brabbins
+  Version: 2.0
+  Author: David Brabbins | UBCIT & Amir Entezaralmahdi | Arts ISIT
   Licence: GPLv2
   Author URI: http://educ.ubc.ca
  */
@@ -47,7 +47,9 @@ Class UBC_Education_Theme_Options {
         add_filter( 'ubc_collab_theme_options_validate', array(__CLASS__, 'validate'), 10, 2 );  
 		    	
         add_action( 'wp_head', array( __CLASS__,'wp_head' ) );
-				
+		
+		add_action( 'wp_footer', array( __CLASS__,'education_return' ), 10, 1 );
+						
 		//foe uploader scripts
 		add_action('admin_print_scripts', array(__CLASS__,'education_upload_scripts' ) ); 
 		add_action('admin_enqueue_scripts', array(__CLASS__,'foe_uploader_options_enqueue_scripts' ) );
@@ -60,6 +62,7 @@ Class UBC_Education_Theme_Options {
 		//Add FOE Back to top link
 		add_action('wp-hybrid-clf_after_content', array(__CLASS__, 'output_back_to_top') , 10);
     }
+	
     
     /**
      * foe_uploader_options_enqueue_scripts function.
@@ -161,7 +164,7 @@ Class UBC_Education_Theme_Options {
 						array(__CLASS__,'foe_brand_options'), // Function that renders the settings field
 						'theme_options', // Menu slug, used to uniquely identify the page; see ubc_collab_theme_options_add_page()
 						'foe-options' // Settings section. Same as the first argument in the add_settings_section() above
-				);        
+				); 
 				//Add Hardcoded list
 				add_settings_field(
 						'foe-hardcoded-options', // Unique identifier for the field for this section
@@ -170,8 +173,8 @@ Class UBC_Education_Theme_Options {
 						'theme_options', // Menu slug, used to uniquely identify the page; see ubc_collab_theme_options_add_page()
 						'foe-options' // Settings section. Same as the first argument in the add_settings_section() above
 				);  
-    }     
-   
+    }  
+	   
     /**
      *  foe_colour_options.
      * Display colour options for Education specific template
@@ -180,28 +183,27 @@ Class UBC_Education_Theme_Options {
      */   
     function foe_colour_options(){ ?>
 
-        <div class="explanation"><a href="#" class="explanation-help">Info</a>
-          <div>These colours are specific to each unit.</div>
-        </div>
-        <div id="education-unit-colour-box">
-            <b>Unit/Website Main Colour:</b><br />
-            Read more about <a href="http://clf.educ.ubc.ca/design-style-guide/clf-specifications/#contrast" target="_blank">colour contrast</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/clf-specifications/#contrast" target="_blank">web accesibility</a>.
-            <div class="education-colour-item main-color"><br />
-              <span>Main colour </span>
-              <?php  UBC_Collab_Theme_Options::text( 'education-main-colour' ); ?>
-            </div>
-            <br/>
-            <div class="education-colour-item secondary-color"><span>Secondary colour: </span>
-              <?php  UBC_Collab_Theme_Options::text( 'education-gradient-colour' ); ?>
-            </div>
-        </div>
-        <br/>
-        <!--          <div class="education-colour-item"><span>(C) Hover colour: </span>
+<div class="explanation"><a href="#" class="explanation-help">Info</a>
+  <div>These colours are specific to each unit.</div>
+</div>
+<div id="education-unit-colour-box"> <b>Unit/Website Main Colour:</b><br />
+  Read more about <a href="http://clf.educ.ubc.ca/design-style-guide/clf-specifications/#contrast" target="_blank">colour contrast</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/clf-specifications/#contrast" target="_blank">web accesibility</a>.
+  <div class="education-colour-item main-color"><br />
+    <span>Main colour </span>
+    <?php  UBC_Collab_Theme_Options::text( 'education-main-colour' ); ?>
+  </div>
+  <br/>
+  <div class="education-colour-item secondary-color"><span>Secondary colour: </span>
+    <?php  UBC_Collab_Theme_Options::text( 'education-gradient-colour' ); ?>
+  </div>
+</div>
+<br/>
+<!--          <div class="education-colour-item"><span>(C) Hover colour: </span>
                     <?php  //UBC_Collab_Theme_Options::text( 'education-hover-colour' ); ?>
                   </div>
                   <br/>
         -->
-   <?php
+<?php
    	}
 	
     /**
@@ -211,42 +213,37 @@ Class UBC_Education_Theme_Options {
      * @return void
      */      
     function foe_brand_options(){ ?>
-        <div class="explanation"><a href="#" class="explanation-help">Info</a>
-          <div>
-            <p><strong>This section is used to upload the department or units banner and chevron.</strong></p>
-            <p>The chevron needs two files:</p>
-            <ol>
-              <li>one image for regular screens and devices</li>
-              <li>and one image for high resolution screens such as retina displays</li>
-            </ol>
-            <p>Find dimensions and templates for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.</p>
-          </div>
-        </div>
-        <b>Unit/Website Banner and Chevron Options:</b><br />
-        
-        Find resources for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.
-          <div class="brand-img-upload"><br />
-            <?php UBC_Collab_Theme_Options::checkbox( 'education-enable-banner', 1, 'Enable Banner image upload?' ); ?>
-          </div>
-          <div class="brand-img-upload banner-enable">
-          Uncheck to remove banner.
-          <span><br />
-            <strong>Banner Image:</strong></span>
-            <p>* Leave the form field empty to use the Faculty of Education banner.</p>
-            <?php  UBC_Collab_Theme_Options::text( 'foe-banner-image' ); ?>
-            <input id="upload_banner_button" type="button" class="button" value="Upload">
-            <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-banner-image' ); ?>" /> </div>
-            
-          <div class="brand-img-upload"><span><strong>Regular Chevron Image:</strong></span>
-            <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-image-regular' ); ?>
-            <input id="upload_regular_button" type="button" class="button" value="Upload">
-            <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-chevron-image-regular' ); ?>" /> </div>
-            
-          <div class="brand-img-upload"><span><strong>Retina Chevron Image:</strong></span>
-            <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-image-retina' ); ?>
-            <input id="upload_retina_button" type="button" class="button" value="Upload">
-            <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-chevron-image-retina' ); ?>" /> </div>
-	<?php 
+<div class="explanation"><a href="#" class="explanation-help">Info</a>
+  <div>
+    <p><strong>This section is used to upload the department or units banner and chevron.</strong></p>
+    <p>The chevron needs two files:</p>
+    <ol>
+      <li>one image for regular screens and devices</li>
+      <li>and one image for high resolution screens such as retina displays</li>
+    </ol>
+    <p>Find dimensions and templates for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.</p>
+  </div>
+</div>
+<b>Unit/Website Banner and Chevron Options:</b><br />
+Find resources for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#chevron" target="_blank">chevron</a> and <a href="http://clf.educ.ubc.ca/design-style-guide/dimensions/#banner" target="_blank">banner</a>.
+<div class="brand-img-upload"><br />
+  <?php UBC_Collab_Theme_Options::checkbox( 'education-enable-banner', 1, 'Enable Banner image upload?' ); ?>
+</div>
+<div class="brand-img-upload banner-enable"> Uncheck to remove banner. <span><br />
+  <strong>Banner Image:</strong></span>
+  <p>* Leave the form field empty to use the Faculty of Education banner.</p>
+  <?php  UBC_Collab_Theme_Options::text( 'foe-banner-image' ); ?>
+  <input id="upload_banner_button" type="button" class="button" value="Upload">
+  <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-banner-image' ); ?>" /> </div>
+<div class="brand-img-upload"><span><strong>Regular Chevron Image:</strong></span>
+  <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-image-regular' ); ?>
+  <input id="upload_regular_button" type="button" class="button" value="Upload">
+  <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-chevron-image-regular' ); ?>" /> </div>
+<div class="brand-img-upload"><span><strong>Retina Chevron Image:</strong></span>
+  <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-image-retina' ); ?>
+  <input id="upload_retina_button" type="button" class="button" value="Upload">
+  <img src="<?php echo UBC_Collab_Theme_Options::get( 'foe-chevron-image-retina' ); ?>" /> </div>
+<?php 
       } 
 		
     /**
@@ -256,28 +253,26 @@ Class UBC_Education_Theme_Options {
      * @return void
      */      
     function foe_hardcoded_options(){ ?>
-        <div class="explanation"><a href="#" class="explanation-help">Info</a>
-          <div>The following are the description of hardcoded items and resources for a Faculty of Education Theme.</div>
-        </div>
-        <div id="education-hardcoded-box">
-          <b>The following features are hardcoded:</b><br />
-          <ol>
-            <li>Blue on White UBC header</li>
-            <li>Faculty of Education Style</li>
-            <li>Department/ Unit Header</li>
-            <li>Circled <strong>Featured Images</strong> for pages. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
-            <li>Back to Top link</li>
-          </ol>
-        </div>
-        <div id="education-resources">
-          <b>Faculty of Education Resources:</b><br />
-          <ol>
-            <li><a href="http://clf.educ.ubc.ca/" target="_blank">Faculty of Education CLF</a></li>
-            <li><a href="http://wiki.ubc.ca/Documentation:UBC_Content_Management_System" target="_blank">WordPress/ CMS Wiki site</a></li>
-            <li><a href="http://clf.ubc.ca" target="_blank">UBC CLF</a></li>
-          </ol>
-        </div>
-
+<div class="explanation"><a href="#" class="explanation-help">Info</a>
+  <div>The following are the description of hardcoded items and resources for a Faculty of Education Theme.</div>
+</div>
+<div id="education-hardcoded-box"> <b>The following features are hardcoded:</b><br />
+  <ol>
+    <li>Blue on White UBC header</li>
+    <li>Faculty of Education Style</li>
+    <li>Department/ Unit Header</li>
+    <li>Circled <strong>Featured Images</strong> for pages. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
+    <li>Body classes based on partent and category slugs. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a><</li>
+    <li>Back to Top link</li>
+  </ol>
+</div>
+<div id="education-resources"> <b>Faculty of Education Resources:</b><br />
+  <ol>
+    <li><a href="http://clf.educ.ubc.ca/" target="_blank">Faculty of Education CLF</a></li>
+    <li><a href="http://wiki.ubc.ca/Documentation:UBC_Content_Management_System" target="_blank">WordPress/ CMS Wiki site</a></li>
+    <li><a href="http://clf.ubc.ca" target="_blank">UBC CLF</a></li>
+  </ol>
+</div>
 <?php	
     UBC_Education_Theme_Options::education_defaults();
     }    
@@ -334,8 +329,7 @@ Class UBC_Education_Theme_Options {
 	    // Validate Unit Colour Options A, B, and C
             $starter['education-main-colour'] = UBC_Collab_Theme_Options::validate_text($input['education-main-colour'], $starter['education-main-colour'] );
             $starter['education-gradient-colour'] = UBC_Collab_Theme_Options::validate_text($input['education-gradient-colour'], $starter['education-gradient-colour'] );
-            $starter['education-hover-colour'] = UBC_Collab_Theme_Options::validate_text($input['education-hover-colour'], $starter['education-hover-colour'] );
-			
+            $starter['education-hover-colour'] = UBC_Collab_Theme_Options::validate_text($input['education-hover-colour'], $starter['education-hover-colour'] );			
 	    // Validate Image URLs for Education Branding
 			$starter['education-enable-banner'] = (bool)$input['education-enable-banner'];
 			$starter['foe-banner-image'] = UBC_Collab_Theme_Options::validate_text($input['foe-banner-image'], $starter['foe-banner-image'] );
@@ -357,21 +351,32 @@ Class UBC_Education_Theme_Options {
 			
 			  // enqueing:
 			  wp_enqueue_style( 'education-clf' );
+			  
 		}
 					
+	 /**
+     * education_return
+     * Adds the Faculty of Education Stylesheet
+     */         
+		function education_return()  
+			{ 
+			  // enqueing:
+			  wp_enqueue_script( 'education-go' );
+			  
+		}
+							
 	 /**
      * output_foe_brand_header
      * Adds the FOE brand header
      */         
 
 	function faculty_plugin_before_header_widget(){ ?>
-    
-            <div id="dept-brand" class=" row-fluid expand">
-                 <div id="department-logo" class="row-fluid">
-                   <a title="<?php echo get_bloginfo() ?>"  href="<?php echo get_bloginfo('url') ?>"><?php echo get_bloginfo() ?></a>
-               </div>
-            </div>
-       <?php
+<div class="brand-container expand">
+  <div id="dept-brand" class="row-fluid expand dept-brand">
+    <div id="department-logo" class="row-fluid department-logo"> <a title="<?php echo get_bloginfo() ?>"  href="<?php echo get_bloginfo('url') ?>"><?php echo get_bloginfo() ?></a> </div>
+  </div>
+</div>
+<?php
                 }
 
          /**
@@ -407,63 +412,117 @@ Class UBC_Education_Theme_Options {
 		<!-- Back to Top End --> 
 		";
      }
-					
+	 
+	 /**
+     * faculty_return
+     * Adds Faculty Icon
+     */         
+	function faculty_return( $items, $args ) {
+				if ($args->theme_location == 'primary') {
+					$items = '<a id="faculty-education" data-toggle="tooltip" data-placement="left" data-original-title="Go to The Faculty of Education" class="education-logo" href="'.self::$faculty_main_homepage.'" title="Go to The Faculty of Education" target="_blank">Faculty of Education</a>'.$items;
+				}
+				return $items;
+		   }
+
       /**
      * wp_head
      * Appends some of the dynamic css and js to the wordpress header
      */        
         function wp_head(){ ?>
-			<style type="text/css" media="screen">
-                #ubc7-unit {
-				 background: #002145 !important;
-				}
-				#ubc7-unit-menu .nav-collapse .nav > li > a:hover, #ubc7-unit-menu .nav > li.active > a:hover, #ubc7-unit-menu .nav-collapse .dropdown-menu a:hover, #ubc7-unit-menu .btn-group:hover .btn, #ubc7-unit-menu .nav > li.active > .btn-group:hover .btn, #ubc7-unit-menu .nav > li.active > a, #ubc7-unit-menu .nav > li.active > .btn-group, #ubc7-unit-menu .current-menu-ancestor, .current-menu-parent, #ubc7-unit-menu .current-page-parent, .current_page_parent, #ubc7-unit-menu .current-page-ancestor, #ubc7-unit-menu .nav > li.current-page-ancestor > a, #ubc7-unit-menu .nav > li.current-page-ancestor .btn-group > a, #ubc7-unit-menu .nav > li.current-page-ancestor.dropdown .btn-group button,  .sidenav a:hover,  .accordion.sidenav .single a.opened,  .accordion.sidenav .single a.opened:hover,  .sidenav .accordion-heading .accordion-toggle:hover,  .sidenav .accordion-group .accordion-inner>a.opened,  .sidenav .accordion-heading:hover,  .sidenav .accordion-heading a:hover,  .sidenav .accordion-heading:hover a:focus,  .sidenav .accordion-heading:hover a:active,  .sidenav .accordion-heading:hover .accordion-toggle,  .simple-custom-menu .active a,  .simple-custom-menu a:hover,  .carousel-caption {
-				 background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				}
-				h1,  h2,  h3,  h4,  h5,  h6,  #content .hero-unit h1,  #frontpage-siderbar .tab-pane a,  a {
-				 color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
-				}
-				a:hover {
-				 color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
-				}
-				.sidenav {
-				 border: 0;
-				 border-bottom: 10px solid <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-				}
-				#dept-brand {
-				 background: <?php if (UBC_Collab_Theme_Options::get( 'education-enable-banner') == '1') {
-				 echo 'url(' . UBC_Collab_Theme_Options::get('foe-banner-image'). ') ';
-				}
-				else {
-				 echo '';
-				}
-				?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
-				}
-				#department-logo {
-				 background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>);
-				}
-				ul.nav-tabs li a {
-				 background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-				 border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
-				}
-				ul.nav-tabs li.active a {
-				 background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				 border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				}
-				ul.nav-tabs>li>a:hover {
-				 background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				 border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
-				}
-				 @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-					#department-logo {
-					 background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>);
-					}
-				}
-            </style>
+<style type="text/css" media="screen">
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+#ubc7-unit {
+	background: #002145 !important;
+}
+/*-- Top Navigation forced importants !importants ---------------------------*/
+				/*-- Top Navigation Hovers ---------------------------*/
+#ubc7-unit-menu .nav-collapse .nav>li>a:hover, #ubc7-unit-menu .nav-collapse .dropdown-menu a:hover, #ubc7-unit-alternate-navigation .nav-collapse .nav>li>a:hover, #ubc7-unit-alternate-navigation .nav-collapse .dropdown-menu a:hover {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+}
+#ubc7-unit-menu .btn-group button:hover, #ubc7-unit-alternate-navigation .btn-group button:hover {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+}
+/*-- Top Navigation  ---------------------------*/
+				/*-- Top Navigation Current pages ---------------------------*/
+#ubc7-unit-menu .nav > li.active > a, #ubc7-unit-alternate-navigation .nav > li.active > a, #ubc7-unit-menu .nav > li.active > .btn-group > a, #ubc7-unit-alternate-navigation .nav > li.active > .btn-group > a, #ubc7-unit-menu .nav > li.current-page-ancestor > a, #ubc7-unit-alternate-navigation .nav > li.current-page-ancestor > a, #ubc7-unit-menu .nav > li.current-post-parent > a, #ubc7-unit-alternate-navigation .nav > li.current-post-parent > a, #ubc7-unit-menu .nav > li.current-page-ancestor .btn-group > a, #ubc7-unit-alternate-navigation .nav > li.current-page-ancestor .btn-group > a, #ubc7-unit-menu .nav > li.current-post-parent .btn-group > a, #ubc7-unit-alternate-navigation .nav > li.current-post-parent .btn-group > a, #ubc7-unit-menu .nav > li.active > .btn-group, #ubc7-unit-alternate-navigation .nav > li.active > .btn-group, #ubc7-unit-menu .nav > li.current-page-ancestor > .btn-group, #ubc7-unit-alternate-navigation .nav > li.current-page-ancestor > .btn-group, #ubc7-unit-menu .nav > li.current-menu-parent > .btn-group, #ubc7-unit-alternate-navigation .nav > li.current-menu-parent > .btn-group, #ubc7-unit-menu .nav > li.current-post-parent > a, #ubc7-unit-alternate-navigation .nav > li.current-post-parent > a, #ubc7-unit-alternate-navigation .nav > li.current-menu-parent a, #ubc7-unit-menu .dropdown .btn-group:hover .btn, #ubc7-unit-alternate-navigation .dropdown .btn-group:hover .btn, #ubc7-unit-menu .dropdown .btn-group:hover .dropdown-toggle, #ubc7-unit-alternate-navigation .dropdown .btn-group:hover .dropdown-toggle, #ubc7-unit-menu .current-page-ancestor .btn-group .btn, #ubc7-unit-alternate-navigation .current-page-ancestor .btn-group .btn, #ubc7-unit-menu .current-menu-parent .btn-group .btn, #ubc7-unit-alternate-navigation .current-menu-parent .btn-group .btn, #ubc7-unit-menu .current-post-parent .btn-group .btn, #ubc7-unit-alternate-navigation .current-post-parent .btn-group .btn {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+/*-- Top Navigation Hovers ---------------------------*/
+#ubc7-unit-alternate-navigation .nav>li.active>.btn-group:hover .btn, #ubc7-unit-alternate-navigation .dropdown .btn-group:hover .btn, #ubc7-unit-alternate-navigation .dropdown .btn-group:hover .dropdown-toggle, #ubc7-unit-menu .nav>li.active>.btn-group:hover .btn {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+/*-- Sidebar Navigation  ---------------------------*/
+				/*-- Current Pages  ---------------------------*/
+.sidenavigation .accordion-group .accordion-heading.active, .sidenavigation .accordion-group .accordion-heading.active a, .sidenavigation .accordion-group .accordion-heading.active .accordion-toggle, .accordion.sidenav .single a.opened, .simple-custom-menu a .current-post-ancestor a, .simple-custom-menu .current-menu-parent a, .simple-custom-menu.current-post-parent a, .simple-custom-menu .active a, .sidenav .accordion-group .accordion-inner>a.opened, .sidenav .accordion>a.opened {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+/*-- Hover Pages  ---------------------------*/
+.sidenav .single a:hover, .simple-custom-menu.sidenav .menu-item a:hover, .sidenav .accordion-inner a:hover, .sidenav .single a:hover, .simple-custom-menu.sidenav .menu-item a:hover, .sidenav .accordion-inner a:hover {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+.sidenav .accordion-heading:hover, .sidenav .accordion-heading a:hover, .sidenav .accordion-heading:hover a:focus, .sidenav .accordion-heading:hover a:active, .sidenav .accordion-heading:hover .accordion-toggle {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>!important;
+}
+.sidenav .accordion-heading .accordion-toggle:hover {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>!important;
+}
+/*-- Accordion Hover  ---------------------------*/
+.accordion-heading a:hover, .accordion-heading a:active, .accordion-heading a:focus {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+/*-- tab Hover  ---------------------------*/
+.nav-tabs>li>a {
+	background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+	border-color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+}
+.nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+	background-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+	border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover {
+	background-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+	border-color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;	
+}
+/*-- Slider  ---------------------------*/
+#ubc7-carousel .carousel-caption, .ubc-carousel .carousel-caption {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+h1, h2, h3, h4, h5, h6, #content .hero-unit h1, #frontpage-siderbar .tab-pane a, a {
+ color: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+}
+a:hover {
+ color: <?php echo UBC_Collab_Theme_Options::get('education-gradient-colour')?>;
+}
+.sidenav.accordion {
+	border: 0;
+ border-bottom: 10px solid <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+}
+.brand-container {
+ background: <?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+}
+.dept-brand {
+ background: <?php if (UBC_Collab_Theme_Options::get( 'education-enable-banner') == '1') {
+ echo 'url(' . UBC_Collab_Theme_Options::get('foe-banner-image'). ') ';
+}
+else {
+ echo '';
+}
+ ?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?>;
+}
+.department-logo {
+ background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>);
+}
+ @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+#department-logo {
+ background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>);
+}
+}
+</style>
 <?php 
     } 
 }
 
 UBC_Education_Theme_Options::init();
 //var_dump( get_option( 'ubc-collab-theme-options' ));
+
 
