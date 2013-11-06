@@ -1,6 +1,6 @@
 === Education Website ===
 Contributors: brabbins
-Version: 1.0.1
+Version: 2
 Donate link: n/a
 Tags: custom
 Requires at least: 3.5
@@ -40,3 +40,13 @@ So far.
 
 = 1.0 =
 * Upload.
+
+= 2.0 =
+* Refined sidenav and top navigation styles
+* Refined the CSS for smaller file size
+* Added CSS colours for text and backgrounds
+
+ == Upgrade Notice == 
+= 2.0 =
+Updates and enhancements on the plugin
+
