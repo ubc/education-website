@@ -430,7 +430,6 @@ Find resources for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimens
      */        
         function wp_head(){ ?>
 <style type="text/css" media="screen">
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 #ubc7-unit {
 	background: #002145 !important;
 }
