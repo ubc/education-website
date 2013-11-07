@@ -413,17 +413,6 @@ Find resources for the <a href="http://clf.educ.ubc.ca/design-style-guide/dimens
 		";
      }
 	 
-	 /**
-     * faculty_return
-     * Adds Faculty Icon
-     */         
-	function faculty_return( $items, $args ) {
-				if ($args->theme_location == 'primary') {
-					$items = '<a id="faculty-education" data-toggle="tooltip" data-placement="left" data-original-title="Go to The Faculty of Education" class="education-logo" href="'.self::$faculty_main_homepage.'" title="Go to The Faculty of Education" target="_blank">Faculty of Education</a>'.$items;
-				}
-				return $items;
-		   }
-
       /**
      * wp_head
      * Appends some of the dynamic css and js to the wordpress header
