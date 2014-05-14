@@ -1,6 +1,6 @@
-=== Education Website ===
+=== UBC Education Website ===
 Contributors: brabbins
-Version: 2
+Version: 2.10
 Donate link: n/a
 Tags: custom
 Requires at least: 3.5
@@ -14,6 +14,7 @@ Adds the Faculty of Education settings and options
 
 1. Color options for main and secondary
 1. Image uploads for banner and chevron
+1. Opens Sans Font Option
 1. Faculty of Education Style
 1. Background Texture
 1. Department/ Unit Header
@@ -38,15 +39,18 @@ So far.
 
 == Changelog ==
 
-= 1.0 =
-* Upload.
+= Version 2.1 =
+Updates and enhancements on the plugin
+*. Full Width Styles added, centred and left
+*. Updated featured images to any size
+*. Open Sans font selection in theme options
+*. Minor tweaks for payload size
 
-= 2.0 =
+= Version 2.0 =
 * Refined sidenav and top navigation styles
 * Refined the CSS for smaller file size
 * Added CSS colours for text and backgrounds
+* Updates and enhancements on the plugin
 
- == Upgrade Notice == 
-= 2.0 =
-Updates and enhancements on the plugin
-
+= Version 1.0 =
+* Upload
