@@ -1,5 +1,6 @@
 /* Style Sheet Categories */
 /*----------------------------------------- Primary Styles*/
+/*----------------------------------------- Full Width Styles*/
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 /*----------------------------------------- Front Page*/
@@ -36,10 +37,37 @@ h1, h2, h3, h4, h5, h6, .hero-unit h1 {
 #container, .home.home-default #container.home-default #container {
 	padding-top: 15px !important;
 }
-.home #container {
-	padding-top: 15px !important;
-}
 
+/*----------------------------------------- Full Width Styles*/
+.full-width #body-container { background-color: #FFF }
+.full-width .full-width-container {
+    margin-right: auto;
+    margin-left: auto;
+}
+.full-width-container {
+    width: 940px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+}
+.full-width .row-fluid.dept-brand {
+    width: 940px;
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+}
+.full-width-container .breadcrumb.expand {
+	margin-left: 0;
+}
+.full-width-left .full-width-container {
+    width: auto;
+    margin-right: 20px;
+    margin-left: 20px
+}
+.full-width-left .row-fluid.dept-brand {
+       width: auto;
+}
 /*----------------------------------------- Top Navigation*/
 ul.nav {
 	margin-bottom: 0;
@@ -92,7 +120,7 @@ ul.nav {
 	height: 62px;
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	z-index: 100;
+	z-index: 10;
 	zoom: 1;
 	h1 {
 		display: none;
@@ -198,19 +226,15 @@ body {
 	position: relative;
 	margin-top: 0px;
 	padding: 0;
+
+	h1 {
 		
-	.page-title, .entry-title, .archive-title, .category-title {
-		border-bottom: 1px solid #d7e0e7;
-		padding-bottom: 9px;
-		margin: 0 0 10px 0;
-	}
-	img.featured-images-pages {
-		margin: 0 0 10px 10px;
-		-webkit-border-radius: 500px;
-		-moz-border-radius: 500px;
-		border-radius: 500px;
-		padding: 4px;
-		background-color: #fff;
+		&.page-title, &.entry-title, &.archive-title, &.category-title {
+			border-bottom: 1px solid #d7e0e7;
+			text-align: left;
+			padding-bottom: 9px;
+			margin: 0 0 10px 0;
+		}
 	}
 }
 
@@ -219,10 +243,6 @@ body {
 	 	#content {
 			h1.page-title, h1.entry-title, h1.loop-title, h1.archive-title, h1.category-title {
 				margin-top: 45px;
-			}
-			
-			img.featured-images-pages {
-				margin: 10px 0 0 0;
 			}
 		}
 	}
@@ -236,20 +256,8 @@ body {
 		
 		.entry-content > p:first-child {
 		}
-		
-		.featured-images-pages {
-			margin: 20px 0 0 0;
-		}
 	}
 	
-}
-
-.l2-column-ms, .l3-column-msp {
-	#content {
-		.featured-images-pages {
-			margin: 0 0 10px 10px;
-		}
-	}
 }
 .feed-view-blog .hentry, .feed-view-blog h2.entry-title {
 	margin-bottom: 0;
@@ -365,12 +373,29 @@ color: #fff;
 }
 /*----------------------------------------- Featured Images*/
 .featured-images-pages {
-	width: 275px;
-	max-width: 275px;
-	height: auto;
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0 auto 20px auto;
+	width: 250px;
+	max-width: 250px;
+	height: 250px;
+	max-height: 250px;
+	float: right;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	border-radius: 500px;
+	padding: 4px;
+	border: 4px solid white;
+	overflow: hidden;
+
+	img {
+		max-width: none;
+		width: initial;
+		height: 350px;
+		margin: -10px 0 0 -10px;
+	}
 }
-
-
 /*----------------------------------------- Profiles*/
 .feed-view-blog h2.entry-title a {
 	text-decoration: underline;
@@ -606,9 +631,9 @@ color: #fff;
 		}
 	}
 }
- @media(max-width:767px) {
+@media screen and (max-width:767px) {
 /*----------------------------------------- Front Page*/
-#frontpage-siderbar {	
+	#frontpage-siderbar {	
 		 .widget-inside {
 			height: auto;
 			min-height: auto;
@@ -621,7 +646,24 @@ color: #fff;
 			}
 		}
 	}
+
+	#content h1 {
+		
+		&.page-title, &.entry-title, &.archive-title, &.category-title {
+			text-align: center;
+
+		}
+	}
+
+	/*----------------------------------------- Featured Images*/
+	.featured-images-pages {
+		float: none;
+		clear: both;
+		margin: 0 auto 10px;
+		display: block;
+}	
 }
+
 
 @media(min-width:767px) {
 /*----------------------------------------- Primary Styles*/
@@ -696,6 +738,13 @@ color: #fff;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
   	box-sizing: border-box;
+  	h1 {
+		
+		&.page-title, &.entry-title, &.archive-title, &.category-title {
+			margin-top: 10px;
+			text-align: left;
+		}
+	}
 }
 
 /*----------------------------------------- Sidebar And Secondary Navigation*/
@@ -704,17 +753,13 @@ color: #fff;
 }
 /*----------------------------------------- Featured Images*/
 .featured-images-pages {
-	width: auto;
+	width: 275px;
 	max-width: 275px;
-	height: auto;
-}
-.l1-column {
-	 #content {
-		.featured-images-pages {
-			margin: 0 0px 10px 10px;
-		}
-	}
-	
+	height: 275px;
+	max-height: 275px;
+	float: right;
+	clear: none;
+	margin-left: 20px;
 }
 /*----------------------------------------- Profiles*/
 /*----------------------------------------- Special Features- Accordion, Tabs, List Thumbnails and other */
@@ -749,14 +794,15 @@ color: #fff;
 /*----------------------------------------- Sidebar And Secondary Navigation*/
 /*----------------------------------------- Featured Images*/
 .featured-images-pages {
-	max-width: 300px;
-	height: auto;
+	width: 310px;
+	max-width: 310px;
+	height: 310px;
+	max-height: 310px;
 }
-
 /*----------------------------------------- Profiles*/
 /*----------------------------------------- Special Features- Accordion, Tabs, List Thumbnails and other */
 }
-@media(min-width:1200px) {
+@media screen and (min-width:1200px) {
 /*----------------------------------------- Primary Styles*/
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
@@ -783,8 +829,10 @@ color: #fff;
 /*----------------------------------------- Sidebar And Secondary Navigation*/
 /*----------------------------------------- Featured Images*/
 .featured-images-pages {
-	max-width: 320px;
-	height: auto;
+	width: 340px;
+	max-width: 340px;
+	height: 340px;
+	max-height: 340px;
 }
 
 /*----------------------------------------- Profiles*/
@@ -976,10 +1024,48 @@ border-bottom: 1px solid #CCC;
 	#ubc7-unit-navigation .current-page-ancestor .btn-group a.btn, #ubc7-unit-navigation .current-page-ancestor .btn-group .ubc7-arrow {
 		background-position: -1178px -227px
 	}
+/*----------------------------------------- Full Width Styles*/
+    .full-width-container {
+        margin-left: 0;
+        margin-right: 0;
+        width: auto;
+    }
+    .full-width .row-fluid.dept-brand {
+        width: 100%;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+	.full-width-left .full-width-container {
+        margin-right: 0;
+        margin-left: 0
+    }
+
 }
 
  @media screen and (min-width:1200px) {
 /*----------------------------------------- Primary Styles*/
+/*----------------------------------------- Full Width Styles*/
+    .full-width-container {
+        width: 1170px;
+        display: block;
+        margin: 0 auto;
+    }
+    .full-width .row-fluid.dept-brand {
+        width: 1170px;
+        margin: 0 auto;
+        display: block;
+    }
+    .department-logo {
+        background-position: 53% 0;
+        width: 266px;
+        margin: 5px 0 0 0;
+    }
+    /*----------------------------------------- Full Width Styles*/
+.full-width-left .row-fluid.dept-brand {
+       width: auto;
+    }
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
 
