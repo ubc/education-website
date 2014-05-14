@@ -6,7 +6,26 @@
         Purpose of the stylesheet follows.
 */
 
-
+@media screen and (max-width: 767px) {
+	.js ul.ui-tabs-nav {
+		width: auto;
+		display: block;
+		position: relative;
+		float: none;
+		border-right: 1px solid #CCC;
+	}
+	.js .ui-tabs-panel {
+		width: auto;
+	}
+	.js .ui-tabs-panel img {
+		max-width: 100%;
+		height: auto;
+	}
+	#layout-options .option-radio, #clf-theme .layout {
+		float: none!important;
+		margin-bottom: 15px;
+	}
+}
 #education-unit-colour-box .education-colour-item > span {
 	display: inline-block;
 	width: 110px;
