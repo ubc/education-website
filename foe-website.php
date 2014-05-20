@@ -31,10 +31,6 @@ Class UBC_Education_Theme_Options {
        	
         if( "UBC Collab" != $theme->name )
         	return true;
-        // include Education specific css file
-        wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
-        // include Education specific javascript file
-        wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
 
         add_action( 'init', array(__CLASS__, 'register_scripts' ), 12 );
 		
@@ -81,12 +77,21 @@ Class UBC_Education_Theme_Options {
 	 * @return void
 	 */
 	static function education_upload_scripts() { 
+
+        // include Education specific css file
+        wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
+        wp_enqueue_style('education-theme-option-style');
+        // include Education specific javascript file
+        wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
+        wp_enqueue_script('education-theme-option-script');  
+              
 		if(function_exists( 'wp_enqueue_media' )){
 			wp_enqueue_media();
 		}else{
 			wp_enqueue_style('thickbox');
 			wp_enqueue_script('media-upload');
 			wp_enqueue_script('thickbox');
+
 		}
 	}
     
@@ -132,7 +137,6 @@ Class UBC_Education_Theme_Options {
 		    wp_enqueue_script('education-theme-option-media-script' );
 		    wp_enqueue_script('foe-upload');
      }
-
     /**
      * admin function.
      * 
