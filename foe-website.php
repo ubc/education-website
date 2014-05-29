@@ -4,7 +4,7 @@
   Plugin Name: UBC Education Website
   Plugin URI:  http://educ.ubc.ca
   Description: Transforms the UBC Collab Theme into an Education website | Note: This plugin will only work on wp-hybrid-clf theme
-  Version: 2.10
+  Version: 2.11
   Author: David Brabbins | UBCIT & Amir Entezaralmahdi | Arts ISIT
   Licence: GPLv2
   Author URI: http://educ.ubc.ca
@@ -70,7 +70,7 @@ Class UBC_Education_Theme_Options {
      * @access public
      * @return void
      */
-    function foe_uploader_options_enqueue_scripts() {
+    static function foe_uploader_options_enqueue_scripts() {
     wp_register_script( 'foe-upload', plugins_url('education-website') .'/js/foe-upload.js', array('jquery','media-upload','thickbox') );     
   }
 
@@ -80,7 +80,7 @@ Class UBC_Education_Theme_Options {
    * @access public
    * @return void
    */
-  function education_upload_scripts() { 
+  static function education_upload_scripts() { 
     if(function_exists( 'wp_enqueue_media' )){
       wp_enqueue_media();
     }else{
@@ -96,7 +96,7 @@ Class UBC_Education_Theme_Options {
      * @access public
      * @return void
      */
-    function register_scripts() {
+    static function register_scripts() {
     // register the spotlight functions
         if( !is_admin() ):
           wp_register_script( 'ubc-collab-education', plugins_url('education-website').'/js/education-website.js', array( 'jquery' ), '0.1', true );
@@ -126,11 +126,11 @@ Class UBC_Education_Theme_Options {
      * @access public
      * @return void
      */
-     function education_ui(){
+     static function education_ui(){
         wp_enqueue_style('education-theme-option-style');
         wp_enqueue_script('education-theme-option-script' );
-    wp_enqueue_script('education-theme-option-media-script' );
-    wp_enqueue_script('foe-upload');
+        wp_enqueue_script('education-theme-option-media-script' );
+        wp_enqueue_script('foe-upload');
      }
     /**
      * admin function.
@@ -285,7 +285,7 @@ jQuery(document).ready( function($) {
     <li>Faculty of Education Style</li>
     <li>Department/ Unit Header</li>
     <li>Circled <strong>Featured Images</strong> for pages. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
-    <li>Body classes based on partent and category slugs. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a><</li>
+    <li>Body classes based on partent and category slugs. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
     <li>Back to Top link</li>
   </ol>
 </div>
