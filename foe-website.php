@@ -30,100 +30,95 @@ Class UBC_Education_Theme_Options {
         $theme = wp_get_theme();
        	
         if( "UBC Collab" != $theme->name )
-        	return true;
+          return true;
+        // include Education specific css file
+        wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
+        // include Education specific javascript file
+        wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
 
         add_action( 'init', array(__CLASS__, 'register_scripts' ), 12 );
-		
+
         add_action('ubc_collab_theme_options_ui', array(__CLASS__, 'education_ui'));
-		
+
         add_action( 'admin_init',array(__CLASS__, 'admin' ), 1);
-		
+
         add_filter( 'ubc_collab_default_theme_options', array(__CLASS__, 'default_values'), 10,1 );
-		
+
         add_filter( 'ubc_collab_theme_options_validate', array(__CLASS__, 'validate'), 10, 2 );  
-		    	
+
         add_action( 'wp_head', array( __CLASS__,'wp_head' ) );
-		
-		    add_action( 'wp_footer', array( __CLASS__,'education_return' ), 10, 1 );
-						
-    		//foe uploader scripts
-    		add_action('admin_print_scripts', array(__CLASS__,'education_upload_scripts' ) ); 
-    		add_action('admin_enqueue_scripts', array(__CLASS__,'foe_uploader_options_enqueue_scripts' ) );
-    		//Adds FOE Stylesheet
-    		add_action('wp_enqueue_scripts', array(__CLASS__, 'education_theme_styles'));		 
-    		//Add FOE Brand Header
-    		add_action( 'wp-hybrid-clf_after_header', array(__CLASS__, 'faculty_plugin_before_header_widget') , 10);
-    		 //Add FOE Featured Images to WordPress if one is present
-    		add_filter('wp-hybrid-clf_before_content', array(__CLASS__,'output_foe_featured_img'), 11, 3);
-    		//Add FOE Back to top link
-    		add_action('wp-hybrid-clf_after_content', array(__CLASS__, 'output_back_to_top') , 10);
+
+        add_action( 'wp_footer', array( __CLASS__,'education_return' ), 10, 1 );
+
+      //foe uploader scripts
+      add_action('admin_print_scripts', array(__CLASS__,'education_upload_scripts' ) ); 
+      add_action('admin_enqueue_scripts', array(__CLASS__,'foe_uploader_options_enqueue_scripts' ) );
+      //Adds FOE Stylesheet
+      add_action('wp_enqueue_scripts', array(__CLASS__, 'education_theme_styles'));    
+      //Add FOE Brand Header
+      add_action( 'wp-hybrid-clf_after_header', array(__CLASS__, 'faculty_plugin_before_header_widget') , 10);
+       //Add FOE Featured Images to WordPress if one is present
+      add_filter('wp-hybrid-clf_before_content', array(__CLASS__,'output_foe_featured_img'), 11, 3);
+      //Add FOE Back to top link
+      add_action('wp-hybrid-clf_after_content', array(__CLASS__, 'output_back_to_top') , 10);
     }
-	
+
     
     /**
      * foe_uploader_options_enqueue_scripts function.
      * 
-     * @access static
+     * @access public
      * @return void
      */
-    static function foe_uploader_options_enqueue_scripts() {
-		wp_register_script( 'foe-upload', plugins_url('education-website') .'/js/foe-upload.js', array('jquery','media-upload','thickbox') );			
-	}
-	
-	/**
-	 * education_upload_scripts function.
-	 * 
-	 * @access public
-	 * @return void
-	 */
-	static function education_upload_scripts() { 
+    function foe_uploader_options_enqueue_scripts() {
+    wp_register_script( 'foe-upload', plugins_url('education-website') .'/js/foe-upload.js', array('jquery','media-upload','thickbox') );     
+  }
 
-        // include Education specific css file
-        wp_register_style('education-theme-option-style', plugins_url('education-website') . '/css/style.css');
-        wp_enqueue_style('education-theme-option-style');
-        // include Education specific javascript file
-        wp_register_script('education-theme-option-script', plugins_url('education-website') . '/js/script.js');
-        wp_enqueue_script('education-theme-option-script');  
-              
-		if(function_exists( 'wp_enqueue_media' )){
-			wp_enqueue_media();
-		}else{
-			wp_enqueue_style('thickbox');
-			wp_enqueue_script('media-upload');
-			wp_enqueue_script('thickbox');
-
-		}
-	}
+  /**
+   * education_upload_scripts function.
+   * 
+   * @access public
+   * @return void
+   */
+  function education_upload_scripts() { 
+    if(function_exists( 'wp_enqueue_media' )){
+      wp_enqueue_media();
+    }else{
+      wp_enqueue_style('thickbox');
+      wp_enqueue_script('media-upload');
+      wp_enqueue_script('thickbox');
+    }
+  }
     
     /**
      * register_scripts function.
      * 
-     * @access static
+     * @access public
      * @return void
      */
-    static function register_scripts() {
-		// register the spotlight functions
+    function register_scripts() {
+    // register the spotlight functions
         if( !is_admin() ):
-        	wp_register_script( 'ubc-collab-education', plugins_url('education-website').'/js/education-website.js', array( 'jquery' ), '0.1', true );
-			wp_register_script( 'foe-upload', plugins_url('education-website') .'/js/foe-upload.js', array('jquery','media-upload','thickbox') );
-        	//wp_enqueue_style('ubc-collab-education', plugins_url('education-website').'/css/education-website.css');
+          wp_register_script( 'ubc-collab-education', plugins_url('education-website').'/js/education-website.js', array( 'jquery' ), '0.1', true );
+      wp_register_script( 'foe-upload', plugins_url('education-website') .'/js/foe-upload.js', array('jquery','media-upload','thickbox') );
+          //wp_enqueue_style('ubc-collab-education', plugins_url('education-website').'/css/education-website.css');
         endif;
-	
-	}
-	
-	/**
-	 * print_script function.
-	 * 
-	 * @access public
-	 * @static
-	 * @return void
-	 */
-	static function print_script() {
-		if ( ! self::$add_script )
-			return;
+
+  }
+
+  /**
+   * print_script function.
+   * 
+   * @access public
+   * @static
+   * @return void
+   */
+  static function print_script() {
+    if ( ! self::$add_script )
+      return;
                 
-		wp_print_scripts( 'ubc-collab-education' );
-	}    
+    wp_print_scripts( 'ubc-collab-education' );
+  }    
         
     /*
      * This function includes the css and js for this specifc admin option
@@ -131,11 +126,11 @@ Class UBC_Education_Theme_Options {
      * @access public
      * @return void
      */
-     static function education_ui(){
+     function education_ui(){
         wp_enqueue_style('education-theme-option-style');
         wp_enqueue_script('education-theme-option-script' );
-		    wp_enqueue_script('education-theme-option-media-script' );
-		    wp_enqueue_script('foe-upload');
+    wp_enqueue_script('education-theme-option-media-script' );
+    wp_enqueue_script('foe-upload');
      }
     /**
      * admin function.
@@ -417,7 +412,7 @@ jQuery(document).ready( function($) {
          static function output_foe_featured_img(){
 
            if ( is_page() && ! is_front_page() && ! is_home() ) {
-                                set_post_thumbnail_size( 150, 150, true );
+          
                 if (has_post_thumbnail()) {
 
                   $image_url = wp_get_attachment_image_src(get_post_thumbnail_id(),'large', true);
