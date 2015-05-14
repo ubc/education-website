@@ -676,7 +676,7 @@ jQuery(document).ready( function($) {
           ?>
 <style type="text/css" media="screen">
 <?php if (UBC_Collab_Theme_Options::get( 'open-sans-add') == '1') : ?>
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,800,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,800,700);
 
 
 .entry-content, h1, h2, h3, h4, h5, h6, p, #ubc7-unit-menu .nav a, .lead, .sidenav a, ul, li, .btn {
