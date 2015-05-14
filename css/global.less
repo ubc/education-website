@@ -132,6 +132,80 @@ ul.nav {
 		height: 60px;
 	}
 }
+.custom-chevron {
+    width: 300px;
+    height: 67px;
+    background: #002145;
+    position: relative;
+    z-index: 1;
+
+
+	&:after {
+	    content: "";
+	    position: absolute;
+	    bottom: -30px;
+	    left: 0;
+	    width: 0;
+	    height: 0;
+	    border-top-width: 30px;
+	    border-top-style: solid;
+	    border-left: 150px solid transparent;
+	    border-right: 150px solid transparent;
+	    -moz-transform: scale(.9999);
+	}
+}
+
+.chevron-text {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: block;
+    padding-top: 25px;
+    height: 90px;
+    color: #FFF;
+    font-size: 77px;
+    position: relative;
+    z-index: 10;
+    font-weight: 800;
+    letter-spacing: -4px;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+
+
+	a, a:hover, a:focus, a:visited {
+	    color: #fff;
+	    text-decoration: none;
+	}
+}
+/*--------------------------- Internet Explorer styles sigh...  */
+.ie7 .custom-chevron, .ie7 .chevron-text {
+	border: none !important;
+	background-color: transparent !important;
+	position: relative !important;
+	width: auto !important;
+	height: auto !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: visible !important;
+	text-align: left !important;
+}
+ .ie7 .chevron-text {
+	margin-top: 22px !important;   
+ }
+.ie7 .custom-chevron {
+	height: 67px !important;   
+}
+.ie8 #container, ie8 .home-default #container {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+	border-top: 35px solid #FFF !important;
+}
+.ie8 .home-layout-option1 #container, .ie8 .home-layout-option2 #container, .ie8 .home-layout-option3 #container, .ie8 .home-layout-option4 #container, .ie8 .home-layout-option5 #container {
+	border-top: none !important;
+}
 
 /*----------------------------------------- Front Page: Includes homepage sidebars, and Carousel */
 body {
@@ -844,16 +918,44 @@ color: #fff;
 	}
 }
 }
+@media(max-width:979px) {
+ .custom-chevron {
+        width: 230px;
+    }
+
+    .custom-chevron:after {
+        border-left: 115px solid transparent;
+        border-right: 115px solid transparent;
+    }
+
+    .chevron-text {
+        font-size: 75px;
+    }
+
+}
 @media(max-width:767px) {
 /*----------------------------------------- Primary Styles*/
 /*----------------------------------------- Top Navigation*/
 /*----------------------------------------- Individual Branding- Unit Logo, Unit Banner  */
-table.collapse td[class*="span"], table.collapse th[class*="span"], .row-fluid table.collapse td[class*="span"], .row-fluid table.collapse th[class*="span"] {
-display: table-row;
-float: none;
-margin-left: 0;
-border-bottom: 1px solid #CCC;
-}
+	.custom-chevron {
+	        width: auto;
+	        background-color: transparent;
+	    &:after {
+	        border-left: none;
+	        border-right: none;
+	    }
+
+	    .chevron-text {
+	        padding-top: 22px;
+	    }
+	}
+	table.collapse td[class*="span"], table.collapse th[class*="span"], .row-fluid table.collapse td[class*="span"], .row-fluid table.collapse th[class*="span"] {
+		display: table-row;
+		float: none;
+		margin-left: 0;
+		border-bottom: 1px solid #CCC;
+	}
+
 
 /*----------------------------------------- Front Page*/
 /*----------------------------------------- Content- Entry Header Styles and Container Styles*/

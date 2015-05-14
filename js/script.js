@@ -78,5 +78,23 @@ jQuery(document).ready(function() {
 			jQuery(".banner-enable").slideUp();
 		}
 	});
+
+    if(jQuery('#ubc-collab-theme-options-foe-chevron-type').attr('checked')){
+        jQuery(".custom-chevron-setup").show();
+        jQuery(".image-chevron").hide();
+    } else{
+        jQuery(".custom-chevron-setup").hide();
+        jQuery(".image-chevron").show();
+    }
+    jQuery('#ubc-collab-theme-options-foe-chevron-type').change( function(){
+        
+        if( jQuery(this).prop("checked") ){
+            jQuery(".custom-chevron-setup").slideDown();
+            jQuery(".image-chevron").slideUp();
+        } else {
+            jQuery(".custom-chevron-setup").slideUp();
+            jQuery(".image-chevron").slideDown();
+        }
+    });
 		
 });

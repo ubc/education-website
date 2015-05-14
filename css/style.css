@@ -5,6 +5,56 @@
     Description:
         Purpose of the stylesheet follows.
 */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300);
+.custom-chevron {
+    width: 300px;
+    height: 67px;
+    position: relative;
+    z-index: 1;
+}
+.custom-chevron:after {
+	content: "";
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 150px solid transparent;
+	border-right: 150px solid transparent;
+	border-top-width: 30px;
+	border-top-style: solid;
+}
+.chevron-text, .laptop-chevron, .mobile-chevron {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: block;
+    height: 90px;
+    color: #FFF;
+    position: relative;
+    z-index:10;
+    font-weight: 800;
+    line-height: 22px;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+.chevron-text a, .chevron-text a:hover, .chevron-text a:focus, .chevron-text a:visited, .laptop-chevron a, .mobile-chevron a {
+    color: #fff;
+    text-decoration: none;
+}
+.dept-brand {
+    height: 67px;
+    position: relative;
+}
+.row-fluid:before, .row-fluid:after {
+display: table;
+line-height: 0;
+content: "";
+}
+
 
 @media screen and (max-width: 767px) {
 	.js ul.ui-tabs-nav {
@@ -54,8 +104,12 @@
 */
 }
 
-#education-unit-colour-box .ubc-collab-textarea, #education-unit-colour-box .ubc-collab-text-input {
+#education-unit-colour-box .ubc-collab-textarea, #education-unit-colour-box .ubc-collab-text-input, .educ-half {
 	width: 45%;
+}
+.educ-one-third {
+	width: 30%;
+	float: left;
 }
 #education-unit-colour-box .wp-picker-container .iris-picker {
 	margin-left: 120px;
@@ -67,12 +121,32 @@
 	z-index: 1;
 }
 /* Education Brand */
-.brand-img-upload {
-	margin-bottom: 15px;
+.brand-img-upload, .chevron-container {
+	margin-bottom: 25px;
+}
+.chevron-container input{
+	width: 50px;
+	text-align: center;
 }
 .brand-img-upload, .brand-img-upload span, .brand-img-upload .button, .brand-img-upload .ubc-collab-text-input {
 	display: block;
 	clear: both;
+}
+.educ-clearfix:before,
+.educ-clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.educ-clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.educ-clearfix{
+    *zoom: 1;
 }
 .brand-img-upload .ubc-collab-text-input {
 	width: 55%;
