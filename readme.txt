@@ -1,6 +1,6 @@
 === UBC Education Website ===
-Contributors: brabbins
-Version: 2.2
+Contributors: brabbins, davis
+Version: 2.20
 Donate link: n/a
 Tags: custom
 Requires at least: 3.5
@@ -41,9 +41,9 @@ So far.
 
 = Version 2.2 =
 Updates and enhancements on the plugin
-*. CSS live text option
-*. Added Faculty of Education Home button option
-*. Centered Banner graphic 
+*. Updated chevron to add live text option
+*. Faculty of Education Home button option added
+*. Banner image centred as default 
 
 
 = Version 2.1 =
