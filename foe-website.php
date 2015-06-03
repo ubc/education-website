@@ -739,8 +739,16 @@ h1, h2, h3, h4, h5, h6 { font-weight: 300 }
   background: url(<?php echo UBC_Collab_Theme_Options::get('foe-button-lightblue')?>) no-repeat;
 }
 }
- @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) (min-width:1100px) {
-#FOE-button {
+ 
+ @media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+  #FOE-button {
   background: url(<?php echo UBC_Collab_Theme_Options::get('foe-button-darkblue-retina')?>) no-repeat;
     background-size: 30px 30px;
 	height: 30px;
@@ -753,7 +761,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 300 }
   background: url(<?php echo UBC_Collab_Theme_Options::get('foe-button-lightblue-retina')?>) no-repeat;
    background-size: 30px 30px;
 }
+
 }
+
 <?php endif; ?>
 
 <?php if (UBC_Collab_Theme_Options::get( 'foe-chevron-type') == 0) : ?>
@@ -774,7 +784,13 @@ h1, h2, h3, h4, h5, h6 { font-weight: 300 }
   background: url(<?php echo UBC_Collab_Theme_Options::get('foe-button-lightblue')?>) no-repeat;
 }
 }
- @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) (min-width:1100px) {
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
 #FOE-button {
   background: url(<?php echo UBC_Collab_Theme_Options::get('foe-button-darkblue-retina')?>) no-repeat;
   background-size: 30px 30px;
