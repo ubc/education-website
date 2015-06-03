@@ -224,6 +224,11 @@ jQuery(document).ready( function($) {
       console.log( value );
       $('.chevron-text').css( "font-size", value + "px");
     })
+	   $( '#foe-chevron-font-weight' ) .bind("change keyup keydown blur click on",function(){
+      var value = $('#foe-chevron-font-weight').val();
+      console.log( value );
+      $('.chevron-text').css( "font-weight", value);
+    })
     $( '#foe-chevron-padding-top' ) .bind("change keyup keydown blur click on",function(){
       var value = $('#foe-chevron-padding-top').val();
       console.log( value );
@@ -242,6 +247,11 @@ jQuery(document).ready( function($) {
       var value = $('#foe-chevron-font-size-laptop').val();
       console.log( value );
       $('.laptop-chevron').css( "font-size", value + "px");
+    })
+	   $( '#foe-chevron-font-weight-laptop' ) .bind("change keyup keydown blur click on",function(){
+      var value = $('#foe-chevron-font-weight-laptop').val();
+      console.log( value );
+      $('.laptop-chevron').css( "font-weight", value);
     })
     $( '#foe-chevron-padding-top-laptop' ) .bind("change keyup keydown blur click on",function(){
       var value = $('#foe-chevron-padding-top-laptop').val();
@@ -262,6 +272,11 @@ jQuery(document).ready( function($) {
       console.log( value );
       $('.mobile-chevron').css( "font-size", value + "px");
     })
+	   $( '#foe-chevron-font-weight-mobile' ) .bind("change keyup keydown blur click on",function(){
+      var value = $('#foe-chevron-font-weight-mobile').val();
+      console.log( value );
+      $('.mobile-chevron').css( "font-weight", value);
+    })
     $( '#foe-chevron-padding-top-mobile' ) .bind("change keyup keydown blur click on",function(){
       var value = $('#foe-chevron-padding-top-mobile').val();
       console.log( value );
@@ -279,7 +294,7 @@ jQuery(document).ready( function($) {
 </script>
 <p><strong>Banner Image:</strong></p>
   <p>Check to add banner. Faculty of Education default is solid blue.</p>
-  <?php UBC_Collab_Theme_Options::checkbox( 'education-enable-banner', 0, 'Enable Banner image upload?' ); ?>
+  <?php UBC_Collab_Theme_Options::checkbox( 'education-enable-banner', 1, 'Enable Banner image upload?' ); ?>
 </div>
 <div class="brand-img-upload banner-enable"> 
   <p>* The Faculty of Education default is a solid blue banner. Browse to select and upload the custom banner image you have created.  Banner images should be 1200px by 67px. The banner image is aligned to the center.<br /></p>
@@ -328,6 +343,7 @@ jQuery(document).ready( function($) {
       .chevron-text {
           padding-top: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-padding-top')?>px;
           font-size: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-size')?>px;
+		   font-weight: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-weight')?>;
           letter-spacing: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-letter-spacing')?>px;
       }
 
@@ -341,6 +357,7 @@ jQuery(document).ready( function($) {
       .laptop-chevron {
           padding-top: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-padding-top-laptop')?>px;
           font-size: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-size-laptop')?>px;
+		  font-weight: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-weight-laptop')?>;
           letter-spacing: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-letter-spacing-laptop')?>px; 
       }
       .custom-chevron.mobile {
@@ -354,6 +371,7 @@ jQuery(document).ready( function($) {
       .mobile-chevron {
           padding-top: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-padding-top-mobile')?>px;
           font-size: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-size-mobile')?>px;
+		    font-weight: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-weight-mobile')?>;
           letter-spacing: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-letter-spacing-mobile')?>px;
       }   
       .custom-chevron {
@@ -377,6 +395,8 @@ jQuery(document).ready( function($) {
         <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-padding-top' ); ?>px</div>
         <div class="educ-one-third"> <p>letter spacing</p>
         <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-letter-spacing' ); ?>px</div>
+        <div class="educ-one-third"> <p>font weight (300,400,600,800)</p>
+        <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-font-weight' ); ?></div>
         <br />
         </div>
 
@@ -394,6 +414,8 @@ jQuery(document).ready( function($) {
         <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-padding-top-laptop' ); ?>px</div>
         <div class="educ-one-third"> <p>letter spacing</p>
         <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-letter-spacing-laptop' ); ?>px</div>
+        <div class="educ-one-third"> <p>font weight (300,400,600,800)</p>
+        <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-font-weight-laptop' ); ?></div>
         <br />
         </div>
       <div class="brand-container expand">
@@ -410,6 +432,8 @@ jQuery(document).ready( function($) {
         <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-padding-top-mobile' ); ?>px</div>
         <div class="educ-one-third"> <p>letter spacing</p>
         <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-letter-spacing-mobile' ); ?>px</div>
+        <div class="educ-one-third"> <p>font weight (300,400,600,800)</p>
+        <?php  UBC_Collab_Theme_Options::text( 'foe-chevron-font-weight-mobile' ); ?></div>
         <br />
         </div>
       <div class="brand-container expand">
@@ -461,7 +485,7 @@ jQuery(document).ready( function($) {
     <li>Faculty of Education Style</li>
     <li>Department/ Unit Header</li>
     <li>Circled <strong>Featured Images</strong> for pages. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
-    <li>Body classes based on partent and category slugs. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
+    <li>Body classes based on parent and category slugs. <a href="http://clf.educ.ubc.ca/features/featured-images/" target="_blank">Find out more.</a></li>
     <li>Back to Top link</li>
   </ol>
 </div>
@@ -506,11 +530,14 @@ jQuery(document).ready( function($) {
 						 'foe-button-lightblue-retina'      =>  plugins_url('education-website')."/img/FOE-icon-lightblue-retina.png",
 						 'foe-button-darkblue-retina'       =>  plugins_url('education-website')."/img/FOE-icon-darkblue-retina.png",
                         'foe-chevron-type'                   =>   0,
-				        'foe-banner-image'    			         =>  plugins_url('education-website')."/img/banner.png",
+				        'foe-banner-image'    			     =>  plugins_url('education-website')."/img/banner.png",
         				'foe-chevron-image-regular'          =>  plugins_url('education-website')."/img/faculty-chevron.png",
         				'foe-chevron-image-retina'           =>  plugins_url('education-website')."/img/faculty-chevron-@2x.png",
                 'foe-chevron-acronym'                =>  "EDUC",
                 'foe-chevron-font-size'              =>  "77",
+				'foe-chevron-font-weight'              =>  "600",
+				'foe-chevron-font-weight-laptop'       =>  "600",
+				'foe-chevron-font-weight-mobile'       =>  "600",
                 'foe-chevron-padding-top'            =>  "25",
                 'foe-chevron-letter-spacing'         =>  "-4",
                 'foe-chevron-font-size-laptop'       =>  "75",
@@ -557,6 +584,9 @@ jQuery(document).ready( function($) {
 			$starter['foe-chevron-image-retina'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-image-retina'], $starter['foe-chevron-image-retina'] );
       $starter['foe-chevron-acronym'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-acronym'], $starter['foe-chevron-acronym'] );
       $starter['foe-chevron-font-size'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-font-size'], $starter['foe-chevron-font-size'] );
+	   $starter['foe-chevron-font-weight'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-font-weight'], $starter['foe-chevron-font-weight'] );
+	    $starter['foe-chevron-font-weight-laptop'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-font-weight-laptop'], $starter['foe-chevron-font-weight-laptop'] );
+		 $starter['foe-chevron-font-weight-mobile'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-font-weight-mobile'], $starter['foe-chevron-font-weight-mobile'] );
       $starter['foe-chevron-padding-top'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-padding-top'], $starter['foe-chevron-padding-top'] );
       $starter['foe-chevron-letter-spacing'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-letter-spacing'], $starter['foe-chevron-letter-spacing'] );
       $starter['foe-chevron-font-size-laptop'] = UBC_Collab_Theme_Options::validate_text($input['foe-chevron-font-size-laptop'], $starter['foe-chevron-font-size-laptop'] );
@@ -677,7 +707,7 @@ jQuery(document).ready( function($) {
           ?>
 <style type="text/css" media="screen">
 <?php if (UBC_Collab_Theme_Options::get( 'open-sans-add') == '1') : ?>
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,800,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,800,700);
 
 
 .entry-content, h1, h2, h3, h4, h5, h6, p, #ubc7-unit-menu .nav a, .lead, .sidenav a, ul, li, .btn {
@@ -845,21 +875,15 @@ else {
  ?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?> no-repeat;
 }
 <?php else: ?>
-.dept-brand {
-background: <?php if (UBC_Collab_Theme_Options::get( 'education-enable-banner') == '1') {
- echo 'url(' . UBC_Collab_Theme_Options::get('foe-banner-image'). ') ';
-}
-else {
- echo '';
-}
- ?><?php echo UBC_Collab_Theme_Options::get('education-main-colour')?> no-repeat;
-}
 
 <?php endif; ?>
+
 
 .department-logo {
  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-regular')?>);
 }
+
+
  @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 #department-logo {
  background-image: url(<?php echo UBC_Collab_Theme_Options::get('foe-chevron-image-retina')?>);
@@ -876,6 +900,7 @@ border-top-color: rgba(<?php echo $rgb; ?>,1);
 .chevron-text {
         padding-top: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-padding-top')?>px;
         font-size: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-size')?>px;
+		font-weight: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-weight')?>;
         letter-spacing: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-letter-spacing')?>px;
 }
 
@@ -883,6 +908,7 @@ border-top-color: rgba(<?php echo $rgb; ?>,1);
   .chevron-text {
         padding-top: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-padding-top-laptop')?>px;
         font-size: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-size-laptop')?>px;
+		font-weight: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-weight-laptop')?>;
         letter-spacing: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-letter-spacing-laptop')?>px;
   }
 
@@ -894,6 +920,7 @@ border-top-color: rgba(<?php echo $rgb; ?>,1);
   .chevron-text {
         padding-top: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-padding-top-mobile')?>px;
         font-size: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-size-mobile')?>px;
+		font-weight: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-font-weight-mobile')?>;
         letter-spacing: <?php echo UBC_Collab_Theme_Options::get('foe-chevron-letter-spacing-mobile')?>px;
   }
 }

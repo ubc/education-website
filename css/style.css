@@ -1,11 +1,10 @@
 /* 
     Document   : style
-    Created on : 22-Mar-2013, 12:39:53 PM
-    Author     : David
-    Description:
-        Purpose of the stylesheet follows.
+    Created on : 3-June-2015
+    Author     : D. Brabbins, C. Davis
+    Description: Purpose of the stylesheet follows.
 */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,800,600,300);
 .custom-chevron {
     width: 300px;
     height: 67px;
@@ -35,7 +34,6 @@
     color: #FFF;
     position: relative;
     z-index:10;
-    font-weight: 800;
     line-height: 22px;
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
@@ -108,7 +106,7 @@ content: "";
 	width: 45%;
 }
 .educ-one-third {
-	width: 30%;
+	width: 20%;
 	float: left;
 }
 #education-unit-colour-box .wp-picker-container .iris-picker {
